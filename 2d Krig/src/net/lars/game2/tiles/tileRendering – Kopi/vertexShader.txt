@@ -1,0 +1,22 @@
+#version 330
+
+in vec2 positions;
+in vec2 textureOffsets;
+
+in vec2 gridPosition;
+in vec2 textureCoords_in;
+
+uniform mat4 orthoMatrix;
+uniform float scale;
+
+out vec2 textureCoords;
+
+void main(void){
+	
+	vec2 positions2 = (positions * scale);
+	vec2 positions3 = positions2 + gridPosition;
+	
+	gl_Position =  orthoMatrix * vec4(positions3, 0.0, 1.0);
+	textureCoords = positions;
+	
+}

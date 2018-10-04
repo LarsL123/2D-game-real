@@ -1,0 +1,11 @@
+// Commment (hvis jeg vil)
+// En tile må skrives på sin egeen lineje ingen kan gå på to linjer.
+// And remember: NO SPACES!
+// 1,1 is the 2 position of the tile. Then you can put all values thet need to be added.
+//
+// f = false
+// t = true
+//	
+//The tile tat is specefied first is id 0, the next is 1, and so on.
+1,1;isSolid=f;
+2,1;isSolid=t;

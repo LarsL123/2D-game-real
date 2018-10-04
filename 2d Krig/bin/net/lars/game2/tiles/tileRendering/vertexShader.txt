@@ -1,0 +1,24 @@
+#version 330
+
+in vec2 positions;
+
+in vec2 firstXY;
+in vec2 secondXY;
+
+out vec2 textureCoords;
+
+uniform mat4 orthoMatrix;
+uniform vec2 textureCoordsVec2Array[4] = vec2[](vec2(0.25f,0.50f), vec2(0.25f, 0.25f), vec2(0.50f,0.50f), vec2(0.50f, 0.25f));
+uniform float tileWidth = 50;
+uniform int tilesPerRowAndColumn = 7;
+
+void main(void){
+
+	int row =  gl_InstanceID %  tilesPerRowAndColumn;
+	int column = gl_InstanceID / tilesPerRowAndColumn;
+
+	gl_Position = orthoMatrix * vec4(positions.x  + tileWidth * row, positions.y  + tileWidth* column , 0.0, 1.0);
+	
+	
+	textureCoords = textureCoordsVec2Array[gl_VertexID];
+}

@@ -1,0 +1,47 @@
+// Commment (hvis jeg vil)
+// En tile må skrives på sin egeen lineje ingen kan gå på to linjer.
+// And remember: NO SPACES!
+// 1,1 is the 2 position of the tile. Then you can put all values thet need to be added.
+//
+// f = false
+// t = true
+//	
+//The tile that is specefied first is id 0, the next is 1, and so on.
+//
+//GrassTiles:
+0,0;isSolid=f;
+1,0;isSolid=f;
+2,0;isSolid=f;
+0,1;isSolid=f;
+1,1;isSolid=f;
+2,1;isSolid=f;
+0,2;isSolid=f;
+1,2;isSolid=f;
+2,2;isSolid=f;
+//WaterTiles:
+0,3;isSolid=t;
+1,3;isSolid=t;
+2,3;isSolid=t;
+0,4;isSolid=t;
+1,4;isSolid=t;
+2,4;isSolid=t;
+0,5;isSolid=t;
+1,5;isSolid=t;
+2,5;isSolid=t;
+//Hilletiles:
+3,0;isSolid=t;
+4,0;isSolid=t;
+5,0;isSolid=t;
+3,1;isSolid=t;
+4,1;isSolid=t;
+5,1;isSolid=t;
+3,2;isSolid=t;
+4,2;isSolid=t;
+5,2;isSolid=t;
+//caveopening:
+3,3;isSolid=t;
+4,3;isSolid=t;
+5,3;isSolid=t;
+3,4;isSolid=t;
+4,4;isSolid=t;
+5,4;isSolid=t;

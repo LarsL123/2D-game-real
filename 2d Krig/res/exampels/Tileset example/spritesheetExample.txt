@@ -1,0 +1,16 @@
+// Commment (if you want)
+// A tile has to be written on one line ONLY!
+//
+// And remember: NO SPACES!
+//
+// The first attrebute: 1,1 is the 2 position of the tile. Then you can put all values thet need to be added.
+//
+// f = false
+// t = true
+//	
+// The tile that is specefied first is id 0 ind the tileset, the next is 1, and so on.
+//
+// Only the specified tiles will be loaded up. If you have som sprites that are not in youse the loader will not include those.
+
+1,1;isSolid=f;
+2,1;isSolid=t;

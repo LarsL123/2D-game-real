@@ -1,0 +1,18 @@
+#version 330
+
+in vec2 positions;
+
+out vec2 textureCoords;
+
+uniform vec4 transform;
+uniform mat4 projectionMatrx;
+uniform mat4 viewMatrix;
+
+void main(void){
+
+	vec2 screenPosition = positions * transform.zw + transform.xy;
+	
+	gl_Position =  projectionMatrx * viewMatrix * vec4(screenPosition, 0.0, 1.0 );
+	textureCoords = positions;
+	
+}
