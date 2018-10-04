@@ -1,4 +1,6 @@
 # 2D-game-real
 My first 2d Gme
 
-This i sthe read me file!!
+This is the read me file!!
+
+Edited from Eclipse
