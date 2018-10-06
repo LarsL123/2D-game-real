@@ -1,6 +1,7 @@
 # 2D-game-real
-My first 2d Gme
+My first 2d Game!
 
-This is the read me file!!
+A simple game written in java.
 
-Edited from Eclipse
+I am using LWJGL and OpenGl for rendering!
+
