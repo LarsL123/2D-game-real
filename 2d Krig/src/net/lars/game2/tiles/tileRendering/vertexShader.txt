@@ -21,5 +21,5 @@ void main(void){
 	gl_Position = orthoMatrix * vec4(positions.x  + tileWidth * row, positions.y  + tileWidth* column , 0.0, 1.0);
 	
 	
-	textureCoords = 0f + textureCoordsVec2Array[gl_VertexID];
+	textureCoords = firstXY + textureCoordsVec2Array[gl_VertexID];
 }

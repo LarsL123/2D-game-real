@@ -78,14 +78,14 @@ public class TileRenderer extends Renderer{
 		float[] vboData = new float[INSTANCED_DATA_LENGTH * numberOfTiles];
 		//Add positions and tile tetxureCoords
 		
-		vboData[0] = 0.5f;
-		vboData[1] = 0.5f;
-		vboData[2] = 1.0f; 
-		vboData[3] = 1.0f;
-		vboData[4] = 0.5f;
-		vboData[5] = 0.5f;
-		vboData[6] = 1.0f;
-		vboData[7] = 1.0f;
+		vboData[0] = 0.25f;
+		vboData[1] = 0.50f;
+		vboData[2] = 0.25f; 
+		vboData[3] = 0.25f;
+		vboData[4] = 0.50f;
+		vboData[5] = 0.50f;
+		vboData[6] = 0.25f;
+		vboData[7] = 0.75f;
 		
 		
 		loader.updateVbo(vbo, vboData, buffer);
