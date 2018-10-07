@@ -30,7 +30,6 @@ public class TileShader extends ShaderProgram{
 	protected void bindAttributes() {
 		super.bindAttribute(0, "positions");
 		super.bindAttribute(1, "firstXY");
-		super.bindAttribute(2, "secondXY");
 	}
 	
 	public void loadOrthoMatrix(Matrix4f orthoMatrix) {

@@ -56,6 +56,8 @@ public class Assets2 {
 	public static Texture house_one;
 	
 	public static Texture[] currentTiles;
+	
+	public static Texture testTileSet;
 
 	public static Texture caracterHoleImage;
 	public static Texture[] player_down, player_up, player_left, player_right;
@@ -70,6 +72,8 @@ public class Assets2 {
 		tree_one = loadNearestTexture("res/textures/entities/tree_one.png");
 		
 		caracterHoleImage = loadNearestTexture("res/textures/entities/16x16Caracter.png");
+		
+		testTileSet = loadNearestTexture("res/textures/testTileset.png");
 //		BufferedImage image = ImageLoader.loadImage("res/textures/entities/tree_one.png");
 		
 		

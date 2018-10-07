@@ -22,14 +22,21 @@ import net.lars.game2.game.Handler;
 public class TileRenderer extends Renderer{
 	
 	private static final float[] TEXTURE_COORDS_THING = { 0,0 ,0, 0, 0.25f, 0.25f, 0.25f, 0.25f };
+	/**
+	 * All four vertices. Rendering using triangle strips so only four.
+	 */
 	private static final float[] POSITIONS_IN_PIXELS = {0,50, 0, 0, 50,50,50,0};
 	
+	//The max number of tiles.
 	private static final int MAX_INSTANCES = 1000;
-	private static final int INSTANCED_DATA_LENGTH = 4;
+	//How many floats loaded to each instance.
+	private static final int INSTANCED_DATA_LENGTH = 2;
 	
+	//Reusable FloatBuffer.
 	private static final FloatBuffer buffer = BufferUtils.createFloatBuffer(MAX_INSTANCES * INSTANCED_DATA_LENGTH);
 	
 	private int vbo;
+
 	private int pointer;
 
 	private TileShader shader = new TileShader();
@@ -43,7 +50,6 @@ public class TileRenderer extends Renderer{
 		loader.addAttributeToVAO(model.getVaoID(),3, 2, TEXTURE_COORDS_THING);
 		//Stores the grid position and texture of the thing.
 		loader.addinstacedAttribute(model.getVaoID(), vbo, 1, 2, INSTANCED_DATA_LENGTH, 0);
-		loader.addinstacedAttribute(model.getVaoID(), vbo, 2, 2, INSTANCED_DATA_LENGTH, 2);
 		
 		shader.start();
 		shader.loadOrthoMatrix(orthoMatrix);
@@ -68,7 +74,7 @@ public class TileRenderer extends Renderer{
 		prepare();
 		prepareTexture(texture);
 		shader.start();
-		int numberOfTiles = 49;
+		int numberOfTiles = 64;
 		float[] vboData = new float[INSTANCED_DATA_LENGTH * numberOfTiles];
 		//Add positions and tile tetxureCoords
 		

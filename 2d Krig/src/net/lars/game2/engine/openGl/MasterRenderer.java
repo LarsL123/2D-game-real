@@ -27,7 +27,7 @@ public class MasterRenderer {
 	 * 
 	 * 	This Matrix transforms a pixel coordinate between 0/0 and Width/Height to one between -1/1
 	 * 	
-	 * 	I can now use  x, y ,width and height attributes to represent a quad.
+	 * 	I can now use  x, y ,width and height pixel attributes to represent a quad.
 	 * 
 	 * 	This is the screen coordinates now!(before applying the matrix) :
 	 * 
@@ -80,7 +80,7 @@ public class MasterRenderer {
 	public void render(RenderData data, GameCamera camera) {
 		
 //		//TODO load camera matrix
-		tileRenderer.render(Assets2.caracterHoleImage);
+		tileRenderer.render(Assets2.testTileSet);
 		
 		
 		shader.start();
