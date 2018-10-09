@@ -73,7 +73,7 @@ public class Assets2 {
 		
 		caracterHoleImage = loadNearestTexture("res/textures/entities/16x16Caracter.png");
 		
-		testTileSet = loadNearestTexture("res/textures/testTileset.png");
+		testTileSet = loadNearestTexture("res/textures/testTilesetPic.png");
 //		BufferedImage image = ImageLoader.loadImage("res/textures/entities/tree_one.png");
 		
 		

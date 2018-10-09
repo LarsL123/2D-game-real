@@ -1,7 +1,7 @@
 package net.lars.game2.tiles.tileRendering;
 
 import java.nio.FloatBuffer;
-import java.util.ArrayList;
+import java.util.Random;
 
 import org.lwjgl.BufferUtils;
 import org.lwjgl.opengl.GL11;
@@ -10,7 +10,6 @@ import org.lwjgl.opengl.GL20;
 import org.lwjgl.opengl.GL30;
 import org.lwjgl.opengl.GL31;
 import org.lwjgl.util.vector.Matrix4f;
-import org.lwjgl.util.vector.Vector2f;
 
 import net.lars.game2.engine.openGl.Loader;
 import net.lars.game2.engine.shaders.renderingTemplate.Renderer;
@@ -20,6 +19,8 @@ import net.lars.game2.game.Handler;
 
 
 public class TileRenderer extends Renderer{
+	
+	Random random = new Random();
 	
 	private static final float[] TEXTURE_COORDS_THING = { 0,0 ,0, 0, 0.25f, 0.25f, 0.25f, 0.25f };
 	/**
@@ -37,7 +38,7 @@ public class TileRenderer extends Renderer{
 	
 	private int vbo;
 
-	private int pointer;
+	private float[] tiles;
 
 	private TileShader shader = new TileShader();
 	
@@ -56,6 +57,13 @@ public class TileRenderer extends Renderer{
 		shader.loadScale(200);
 		shader.stop();
 		
+		//
+		tiles = new float[128];
+		float[] possiblepositions = {0f, 0.25f, 0.50f, 0.75f};
+		for(int i = 0; i< 128; i++) {
+			tiles[i] = possiblepositions[(int) (Math.random() * 4)];
+		}
+		
 		
 	}
 	
@@ -64,10 +72,7 @@ public class TileRenderer extends Renderer{
 		GL30.glBindVertexArray(model.getVaoID());
 		GL20.glEnableVertexAttribArray(0);
 		GL20.glEnableVertexAttribArray(1);
-		GL20.glEnableVertexAttribArray(2);
-		//reset pointer
-		pointer = 0;
-		
+		GL20.glEnableVertexAttribArray(2);		
 	}
 	
 	public void render(Texture texture) {
@@ -77,15 +82,8 @@ public class TileRenderer extends Renderer{
 		int numberOfTiles = 64;
 		float[] vboData = new float[INSTANCED_DATA_LENGTH * numberOfTiles];
 		//Add positions and tile tetxureCoords
-		
-		vboData[0] = 0.25f;
-		vboData[1] = 0.50f;
-		vboData[2] = 0.25f; 
-		vboData[3] = 0.25f;
-		vboData[4] = 0.50f;
-		vboData[5] = 0.50f;
-		vboData[6] = 0.25f;
-		vboData[7] = 0.75f;
+		vboData = tiles;
+
 		
 		
 		loader.updateVbo(vbo, vboData, buffer);
