@@ -71,8 +71,7 @@ public class TileRenderer extends Renderer{
 		//Bind the VAO.
 		GL30.glBindVertexArray(model.getVaoID());
 		GL20.glEnableVertexAttribArray(0);
-		GL20.glEnableVertexAttribArray(1);
-		GL20.glEnableVertexAttribArray(2);		
+		GL20.glEnableVertexAttribArray(1);	
 	}
 	
 	public void render(Texture texture) {
@@ -96,7 +95,6 @@ public class TileRenderer extends Renderer{
 	private void unbindModel() {
 		GL20.glDisableVertexAttribArray(0);
 		GL20.glDisableVertexAttribArray(1);
-		GL20.glDisableVertexAttribArray(2);
 		GL30.glBindVertexArray(0);	
 	}
 

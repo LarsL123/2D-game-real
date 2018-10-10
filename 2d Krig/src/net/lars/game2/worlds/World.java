@@ -1,13 +1,11 @@
 package net.lars.game2.worlds;
 
-import java.awt.Graphics;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 import org.lwjgl.util.vector.Vector2f;
 
@@ -17,7 +15,6 @@ import net.lars.game2.game.Handler;
 import net.lars.game2.game.RenderData;
 import net.lars.game2.graphics.Assets;
 import net.lars.game2.items.ItemManager;
-import net.lars.game2.tiles.Tile;
 import net.lars.game2.tiles.Tile2;
 import net.lars.game2.tiles.TileID;
 import net.lars.game2.tiles.TileSetManager;
@@ -144,10 +141,10 @@ public class World {
 	}
 	
 	public ArrayList<Vector2f> getTileRenderData() {
-		int xStart = (int) Math.max(0, handler.getGameCamera().getxOffset() / Tile.TILESIZE);
-		int xEnd = (int)Math.min(width, (handler.getGameCamera().getxOffset() + handler.getWidth()) / Tile.TILESIZE +1);
-		int yStart = (int) Math.max(0, handler.getGameCamera().getyOffset() / Tile.TILESIZE);
-		int yEnd = (int)Math.min(height, (handler.getGameCamera().getyOffset() + handler.getHeight())/ Tile.TILESIZE +1);
+		int xStart = (int) Math.max(0, handler.getGameCamera().getxOffset() / Tile2.TILEHEIGHT);
+		int xEnd = (int)Math.min(width, (handler.getGameCamera().getxOffset() + handler.getWidth()) / Tile2.TILEHEIGHT +1);
+		int yStart = (int) Math.max(0, handler.getGameCamera().getyOffset() / Tile2.TILEHEIGHT);
+		int yEnd = (int)Math.min(height, (handler.getGameCamera().getyOffset() + handler.getHeight())/ Tile2.TILEHEIGHT +1);
 		
 		ArrayList<Vector2f> positions = new ArrayList<Vector2f>();
 		

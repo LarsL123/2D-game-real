@@ -1,5 +1,7 @@
 package net.lars.game2.worlds.chunk;
 
+import net.lars.game2.tiles.TileID;
+
 public class Chunk {
 	
 	/*
@@ -7,7 +9,7 @@ public class Chunk {
 	 * 
 	 * May want to store tileEntities here to..
 	 */
-	private int[][] tiles;
+	private TileID[][] tiles;
 	
 	public Chunk() {
 		for(int x = 0; x < 7; x++) {
@@ -15,6 +17,10 @@ public class Chunk {
 				//add tiles
 			}
 		}
+	}
+	
+	public TileID getTileFromChunk(int x,int y) {
+		return tiles[x][y];	
 	}
 	
 }

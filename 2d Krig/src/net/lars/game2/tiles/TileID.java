@@ -11,7 +11,7 @@ package net.lars.game2.tiles;
  *
  *
  * @TODO:
- * 		change the tileID to a byte number. you will probably not have more the 255 tiles in one tilseset To save space and memory.
+ * 		change the tileID to a byte number. you will probably not have more the 255 tiles in one tileSet To save space and memory.
  * 
  * @Suggestions:
  *

@@ -22,17 +22,20 @@ import net.lars.game2.utils.Utils;
  *		Better ticking system ??
  */
 public class Tile2 {
-	
-	public Tile2(BufferedImage texture){
-		this.texture = texture;
-		isSolid = false;
-	}
 	//Class
 	
 	public static final int TILEWIDTH = 32, TILEHEIGHT = 32;
 		
 	private BufferedImage texture;
 	private boolean isSolid;
+	
+	private float x,y;
+	
+	
+	public Tile2(BufferedImage texture){
+		this.texture = texture;
+		isSolid = false;
+	}
 
 	
 	public void tick(){

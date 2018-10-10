@@ -1,9 +1,5 @@
 package net.lars.game2.states;
 
-import java.awt.Graphics;
-
-import javax.jws.Oneway;
-
 import net.lars.game2.game.Handler;
 import net.lars.game2.game.RenderData;
 
