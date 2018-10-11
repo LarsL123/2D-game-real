@@ -7,7 +7,6 @@ import org.lwjgl.util.vector.Vector2f;
 import net.lars.game2.component.Component;
 import net.lars.game2.entity.Entity;
 import net.lars.game2.game.Handler;
-import net.lars.game2.tiles.Tile;
 
 
 public class MovementComponent extends Component{

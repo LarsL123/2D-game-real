@@ -45,8 +45,12 @@ public class GameState extends State{
 
 	@Override
 	public void onStateSet() {
+		
+		
 		world = new World(handler, new MyFile("worlds/world1NewTile.txt"), false);
 		handler.setWorld(world);
+		
+		
 		//Entities
 		
 		Entity entity_1 = new Entity(handler, Assets2.tree_one,  new Vector2f(300, 200), 200, 200, 40, 40, 40, 40);

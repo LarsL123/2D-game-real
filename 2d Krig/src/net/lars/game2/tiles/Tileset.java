@@ -1,13 +1,7 @@
 package net.lars.game2.tiles;
 
-import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.util.ArrayList;
-
-import javax.imageio.ImageIO;
-
-import net.lars.game2.graphics.Assets;
 import net.lars.game2.graphics.ImageLoader;
 import net.lars.game2.graphics.SpriteSheet;
 import net.lars.game2.utils.fileUtils.MyFile;
@@ -33,10 +27,15 @@ public class Tileset {
 	private int tilesetID;
 	private ArrayList<Tile2> tiles = new ArrayList<Tile2>();
 	
+	//TODO not the prettyest
+	//Accessed by the Tile2 class, so public static
+	public static double tileSizeInTextureCoords = 0.04545454545000000;
+	
 	
 	
 	public Tileset(MyFile imageSheet, MyFile infoSheet) {
 		try {
+			System.out.println(tileSizeInTextureCoords);
 			loadTileset(imageSheet, infoSheet);
 			tilesetID = 0;
 		} catch (Exception e) {
@@ -62,11 +61,10 @@ public class Tileset {
 			//Dividing the line into smaller pieces. Each piece has a identification string and a value. Example: isSolid=t
 			String[] currentLine = line.split(";");
 			
-			//Creating the tile and giving it a texture.
+			//Creating the tile.
 			String[] xyPosition = currentLine[0].split(",");
-			BufferedImage texture = sheet.crop(Integer.parseInt(xyPosition[0]) * Assets.tileSize, Integer.parseInt(xyPosition[1]) * Assets.tileSize, Assets.tileSize, Assets.tileSize);
-			
-			Tile2 t = new Tile2(texture);
+//			BufferedImage texture = sheet.crop(Integer.parseInt(xyPosition[0]) * Assets.tileSize, Integer.parseInt(xyPosition[1]) * Assets.tileSize, Assets.tileSize, Assets.tileSize);
+			Tile2 t = new Tile2((float)(Integer.parseInt(xyPosition[0]) * tileSizeInTextureCoords), (float)(Integer.parseInt(xyPosition[1]) * tileSizeInTextureCoords));
 			
 			//Adding all values
 			for(int i = 1; i < currentLine.length; i++){
@@ -77,6 +75,7 @@ public class Tileset {
 			line = infoSheetReader.readLine();
 		}while(line != null);
 		infoSheetReader.close();
+		
 		return tiles;
 		
 	}

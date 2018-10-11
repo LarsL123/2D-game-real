@@ -160,11 +160,11 @@ public class World {
 
 	public Tile2 getTile(int x, int y){
 		if(x < 0 || y < 0 || x >= width || y >= height){
-			return new Tile2(Assets.noImage);	
+			return Tile2.errorTile;	
 		}
 		Tile2 t = tilesetManager.getTile(tilesetsInUse[worldTiles[x][y].getTilesetID()], worldTiles[x][y].getTileID());
 		if(t == null){
-			return new Tile2(Assets.noImage);
+			return Tile2.errorTile;
 		}
 		return t;
 	}

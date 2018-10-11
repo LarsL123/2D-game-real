@@ -1,8 +1,5 @@
 package net.lars.game2.tiles;
 
-import java.awt.Graphics;
-import java.awt.image.BufferedImage;
-
 import net.lars.game2.utils.Utils;
 
 /**
@@ -22,28 +19,28 @@ import net.lars.game2.utils.Utils;
  *		Better ticking system ??
  */
 public class Tile2 {
-	//Class
+	
 	
 	public static final int TILEWIDTH = 32, TILEHEIGHT = 32;
-		
-	private BufferedImage texture;
+	
+	public static Tile2 errorTile = new Tile2((float)(10* Tileset.tileSizeInTextureCoords), (float)(10*Tileset.tileSizeInTextureCoords));
+	
+	
+	//Class
 	private boolean isSolid;
 	
 	private float x,y;
 	
 	
-	public Tile2(BufferedImage texture){
-		this.texture = texture;
+	public Tile2(float x, float y){
+		this.x = x; 
+		this.y = y;
 		isSolid = false;
 	}
 
 	
 	public void tick(){
 		
-	}
-	
-	public void render(Graphics g, int x, int y){
-		g.drawImage(texture, x, y, TILEHEIGHT, TILEWIDTH, null);
 	}
 	
 	public boolean isSolid(){

@@ -4,7 +4,6 @@ import java.awt.Font;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
-import net.lars.game2.tiles.Tile;
 
 /**
  * 	

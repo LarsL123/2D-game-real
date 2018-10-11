@@ -1,4 +1,4 @@
-// Commment (hvis jeg vil)
+// Commment
 // En tile må skrives på sin egeen lineje ingen kan gå på to linjer.
 // And remember: NO SPACES!
 // 1,1 is the 2 position of the tile. Then you can put all values thet need to be added.
