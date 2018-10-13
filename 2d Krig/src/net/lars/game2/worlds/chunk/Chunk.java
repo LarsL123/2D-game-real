@@ -21,6 +21,8 @@ import net.lars.game2.tiles.TileID;
  */
 public class Chunk {
 	
+	public static final int CHUNK_SIZE = 8;
+	
 	/*
 	 * A 8x8 array holding the tiles on a chunk.
 	 * 
@@ -35,19 +37,36 @@ public class Chunk {
 	
 	public Chunk(Vector2f worldposition) {
 		this.worldPosition = worldposition;
-		for(int x = 0; x < 7; x++) {
-			for(int y = 0; y<7; y++) {
+		
+		tiles = new TileID[7][7];
+		
+		for(int x = 0; x < 8; x++) {
+			for(int y = 0; y<8; y++) {
 				//add tiles
 			}
 		}
 	}
 	
-	public TileID getTileFromChunk(int x,int y) {
+	/**
+	 * 
+	 *@Info
+	 *
+	 * Get a tile from this chunk. This in is not supposerd to be used by other packages- @see {@link ChunkManager #getTile(int, int)}
+	 *
+	 * @param x
+	 * @param y
+	 * @return
+	 */
+	TileID getTileFromChunk(int x,int y) {
 		return tiles[x][y];	
 	}
 	
 	public Vector2f getWorldPosition(){
 		return this.worldPosition;
+	}
+	
+	public TileID[][] getTiles() {
+		return this.tiles;
 	}
 	
 }

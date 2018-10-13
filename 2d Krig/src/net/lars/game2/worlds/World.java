@@ -57,8 +57,9 @@ public class World {
 	
 	//Tilesets
 	private TileSetManager tilesetManager;
+	//This will be moved to the tileSetManger...
 	private String[] tilesetsInUse;
-
+	
 	//Items
 	private ItemManager itemManager;
 	
@@ -155,7 +156,6 @@ public class World {
 //				getTile(x, y).render(g, (int)(x * Tile.TILESIZE - handler.getGameCamera().getxOffset()),(int) (y * Tile.TILESIZE - handler.getGameCamera().getyOffset()));
 			}
 		}
-		System.out.println("111");
 		return tilesArray;
 	}
 	
@@ -173,7 +173,6 @@ public class World {
 //				getTile(x, y).render(g, (int)(x * Tile.TILESIZE - handler.getGameCamera().getxOffset()),(int) (y * Tile.TILESIZE - handler.getGameCamera().getyOffset()));
 			}
 		}
-		System.out.println("111");
 		return tilesArray;
 	}
 
@@ -313,7 +312,8 @@ public class World {
 	/**
 	 * 
 	 * @Info:
-	 * 		kind of hard to use, room for a lot of error.
+	 * 		kind of hard to use, not happy with it...
+	 * 
 	 *
 	 * @param x
 	 * @param y
@@ -323,5 +323,9 @@ public class World {
 	 */
 	public void setWorldTile(int x, int y, String tileset, int id) {
 		this.worldTiles[x][y] = new TileID(tileset +  ":" + id);
+	}
+	
+	public TileSetManager getTilesetManager() {
+		return this.tilesetManager;
 	}
 }

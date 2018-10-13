@@ -11,6 +11,7 @@ import org.lwjgl.opengl.GL20;
 import org.lwjgl.opengl.GL30;
 import org.lwjgl.opengl.GL31;
 import org.lwjgl.util.vector.Matrix4f;
+import org.lwjgl.util.vector.Vector2f;
 
 import net.lars.game2.engine.openGl.Loader;
 import net.lars.game2.engine.shaders.renderingTemplate.Renderer;
@@ -18,7 +19,8 @@ import net.lars.game2.engine.textures.Texture;
 import net.lars.game2.game.Handler;
 import net.lars.game2.graphics.Assets2;
 import net.lars.game2.tiles.Tile;
-import net.lars.game2.tiles.Tileset;
+import net.lars.game2.tiles.TileID;
+import net.lars.game2.worlds.chunk.Chunk;
 
 
 
@@ -36,6 +38,7 @@ public class TileRenderer extends Renderer{
 	private static final int MAX_INSTANCES = 1000;
 	//How many floats loaded to each instance.
 	private static final int INSTANCED_DATA_LENGTH = 2;
+	private int numberOfTilesPerChunk = 64;
 	
 	//Reusable FloatBuffer.
 	private static final FloatBuffer buffer = BufferUtils.createFloatBuffer(MAX_INSTANCES * INSTANCED_DATA_LENGTH);
@@ -70,11 +73,21 @@ public class TileRenderer extends Renderer{
 	}
 	
 	public void render(Texture texture) {
+//		ArrayList<Chunk> chunks 
 		prepare();	
 		prepareTexture(t);
 		shader.start();
-		int numberOfTiles = 64;
-		float[] vboData = new float[INSTANCED_DATA_LENGTH * numberOfTiles];
+//		for(Chunk c : chunks) {
+//			renderChunk(c);
+//		}
+		
+		renderChunk(new Chunk(new Vector2f(0f,0f)));
+		shader.stop();
+		unbindModel();
+	}
+	
+	private void renderChunk(Chunk chunk) {
+		float[] vboData = new float[INSTANCED_DATA_LENGTH * numberOfTilesPerChunk];
 		//Add positions and tile tetxureCoords
 		int pointer = 0;
 
@@ -84,13 +97,20 @@ public class TileRenderer extends Renderer{
 			vboData[pointer++] = t.getY();
 		}
 		
-			
+//		TileID[][] tilesa = chunk.getTiles();
+//		
+//		for(int x = 0; x<8; x++) {
+//			for(int y = 0; y<8; y++) {
+//				vboData[pointer++] = handler.getWorld().getTilesetManager().getTile("world1tiles", tilesa[x][y].getTileID()).getX();
+//				vboData[pointer++] = handler.getWorld().getTilesetManager().getTile("world1tiles", tilesa[x][y].getTileID()).getY();
+//			}		
+//		}
 
 		loader.updateVbo(vbo, vboData, buffer);
-		//Stet the last parameter to the number of tiles(instaces)
-		GL31.glDrawArraysInstanced(GL11.GL_TRIANGLE_STRIP, 0, model.getVertextCount(), numberOfTiles);
-		shader.stop();
-		unbindModel();
+		shader.loadChunkPosition(chunk.getWorldPosition());
+		
+		
+		GL31.glDrawArraysInstanced(GL11.GL_TRIANGLE_STRIP, 0, model.getVertextCount(), numberOfTilesPerChunk);
 	}
 
 	private void unbindModel() {

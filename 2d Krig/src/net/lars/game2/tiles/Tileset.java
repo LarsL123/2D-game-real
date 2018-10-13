@@ -5,8 +5,6 @@ import java.util.ArrayList;
 
 import net.lars.game2.engine.textures.Texture;
 import net.lars.game2.graphics.Assets2;
-import net.lars.game2.graphics.ImageLoader;
-import net.lars.game2.graphics.SpriteSheet;
 import net.lars.game2.utils.fileUtils.MyFile;
 
 /**
@@ -31,7 +29,7 @@ public class Tileset {
 	private ArrayList<Tile> tiles = new ArrayList<Tile>();
 	private Texture tileSet;
 	
-	//TODO not the prettyest
+	//TODO not the prettiest
 	//Accessed by the Tile2 class, so public static
 //	public static double tileSizeInTextureCoords = 0.04545454545000000;
 	public static double tileSizeInTextureCoords = 0.05;

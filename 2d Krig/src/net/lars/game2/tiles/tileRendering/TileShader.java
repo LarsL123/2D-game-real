@@ -1,6 +1,7 @@
 package net.lars.game2.tiles.tileRendering;
 
 import org.lwjgl.util.vector.Matrix4f;
+import org.lwjgl.util.vector.Vector2f;
 
 import net.lars.game2.engine.shaders.ShaderProgram;
 
@@ -12,6 +13,7 @@ public class TileShader extends ShaderProgram{
 	private int loctaion_orthograpickMatrix;
 	private int location_size;
 	private int location_tilesPerRowAndColumn;
+	private int location_chunkPosition;
 	
 	
 
@@ -24,12 +26,17 @@ public class TileShader extends ShaderProgram{
 		loctaion_orthograpickMatrix = super.getUniformLocation("orthoMatrix");
 		location_size = super.getUniformLocation("scale");
 		location_tilesPerRowAndColumn = super.getUniformLocation("tilesPerRowAndColumn");
+		location_chunkPosition = super.getUniformLocation("chunkPosition");
 	}
 
 	@Override
 	protected void bindAttributes() {
 		super.bindAttribute(0, "positions");
 		super.bindAttribute(1, "firstXY");
+	}
+	
+	public void loadChunkPosition(Vector2f position) {
+		super.load2DVector(location_chunkPosition, position);
 	}
 	
 	public void loadOrthoMatrix(Matrix4f orthoMatrix) {

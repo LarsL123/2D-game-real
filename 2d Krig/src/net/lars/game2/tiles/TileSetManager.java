@@ -18,7 +18,7 @@ import net.lars.game2.utils.fileUtils.MyFile;
  * @TODO:
  * 
  * @Suggestions:
- * 		Integrate mutithreing. Then the loading and unloading can be done a an separate therad. In world class too.
+ * 		Integrate mutithreing. Then the loading and unloading can be done a an separate thread. In world class too.
  *
  */
 public class TileSetManager {
@@ -53,5 +53,11 @@ public class TileSetManager {
 	
 	public Tile getTile(String tilesetName, int id){
 		return loadedTilesets.get(tilesetName).getTile(id);
+	}
+	
+	//TODO implement this
+	public Tile getTile(TileID i ){
+		return null;
+//		return loadedTilesets.get(tilesetName).getTile(id);
 	}
 }

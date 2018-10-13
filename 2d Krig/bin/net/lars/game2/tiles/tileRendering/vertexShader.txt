@@ -14,13 +14,15 @@ uniform vec2 textureCoordsVec2Array[4] = vec2[](vec2(0f, 0.05f), vec2(0f,0f), ve
 uniform mat4 orthoMatrix;
 uniform float tileWidth = 50;
 uniform int tilesPerRowAndColumn = 8;
+uniform vec2 chunkPosition;
 
 void main(void){
 
 	int row =  gl_InstanceID %  tilesPerRowAndColumn;
+	//Change to multiply. Probably faster.
 	int column = gl_InstanceID / tilesPerRowAndColumn;
 
-	gl_Position = orthoMatrix * vec4(positions.x  + tileWidth * row, positions.y  + tileWidth* column , 0.0, 1.0);
+	gl_Position = orthoMatrix * vec4(positions.x + chunkPosition.x  + tileWidth * row, positions.y + chunkPosition.y  + tileWidth* column , 0.0, 1.0);
 	
 	
 	textureCoords = firstXY + textureCoordsVec2Array[gl_VertexID];
