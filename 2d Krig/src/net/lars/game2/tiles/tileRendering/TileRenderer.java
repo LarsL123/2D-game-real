@@ -17,7 +17,7 @@ import net.lars.game2.engine.shaders.renderingTemplate.Renderer;
 import net.lars.game2.engine.textures.Texture;
 import net.lars.game2.game.Handler;
 import net.lars.game2.graphics.Assets2;
-import net.lars.game2.tiles.Tile2;
+import net.lars.game2.tiles.Tile;
 import net.lars.game2.tiles.Tileset;
 
 
@@ -78,8 +78,8 @@ public class TileRenderer extends Renderer{
 		//Add positions and tile tetxureCoords
 		int pointer = 0;
 
-		ArrayList<Tile2> til = handler.getWorld().getTileRenderData();
-		for(Tile2 t : til) {
+		ArrayList<Tile> til = handler.getWorld().getTileRenderData();
+		for(Tile t : til) {
 			vboData[pointer++] = t.getX();
 			vboData[pointer++] = t.getY();
 		}

@@ -15,7 +15,7 @@ import net.lars.game2.game.Handler;
 import net.lars.game2.game.RenderData;
 import net.lars.game2.graphics.Assets;
 import net.lars.game2.items.ItemManager;
-import net.lars.game2.tiles.Tile2;
+import net.lars.game2.tiles.Tile;
 import net.lars.game2.tiles.TileID;
 import net.lars.game2.tiles.TileSetManager;
 import net.lars.game2.utils.Utils;
@@ -141,13 +141,13 @@ public class World {
 
 	}
 	
-	public ArrayList<Tile2> getTileRenderData() {
-		int xStart = (int) Math.max(0, handler.getGameCamera().getxOffset() / Tile2.TILEHEIGHT);
-		int xEnd = (int)Math.min(width, (handler.getGameCamera().getxOffset() + handler.getWidth()) / Tile2.TILEHEIGHT +1);
-		int yStart = (int) Math.max(0, handler.getGameCamera().getyOffset() / Tile2.TILEHEIGHT);
-		int yEnd = (int)Math.min(height, (handler.getGameCamera().getyOffset() + handler.getHeight())/ Tile2.TILEHEIGHT +1);
+	public ArrayList<Tile> getTileRenderData() {
+		int xStart = (int) Math.max(0, handler.getGameCamera().getxOffset() / Tile.TILEHEIGHT);
+		int xEnd = (int)Math.min(width, (handler.getGameCamera().getxOffset() + handler.getWidth()) / Tile.TILEHEIGHT +1);
+		int yStart = (int) Math.max(0, handler.getGameCamera().getyOffset() / Tile.TILEHEIGHT);
+		int yEnd = (int)Math.min(height, (handler.getGameCamera().getyOffset() + handler.getHeight())/ Tile.TILEHEIGHT +1);
 		
-		ArrayList<Tile2> tilesArray = new ArrayList<Tile2>();
+		ArrayList<Tile> tilesArray = new ArrayList<Tile>();
 		
 		for(int y = yStart;y < yEnd; y++){
 			for(int x = xStart; x < xEnd; x++){
@@ -159,13 +159,13 @@ public class World {
 		return tilesArray;
 	}
 	
-	public ArrayList<Tile2> getTileRenderDataa() {
-		int xStart = (int) Math.max(0, handler.getGameCamera().getxOffset() / Tile2.TILEHEIGHT);
-		int xEnd = (int)Math.min(width, (handler.getGameCamera().getxOffset() + handler.getWidth()) / Tile2.TILEHEIGHT +1);
-		int yStart = (int) Math.max(0, handler.getGameCamera().getyOffset() / Tile2.TILEHEIGHT);
-		int yEnd = (int)Math.min(height, (handler.getGameCamera().getyOffset() + handler.getHeight())/ Tile2.TILEHEIGHT +1);
+	public ArrayList<Tile> getTileRenderDataa() {
+		int xStart = (int) Math.max(0, handler.getGameCamera().getxOffset() / Tile.TILEHEIGHT);
+		int xEnd = (int)Math.min(width, (handler.getGameCamera().getxOffset() + handler.getWidth()) / Tile.TILEHEIGHT +1);
+		int yStart = (int) Math.max(0, handler.getGameCamera().getyOffset() / Tile.TILEHEIGHT);
+		int yEnd = (int)Math.min(height, (handler.getGameCamera().getyOffset() + handler.getHeight())/ Tile.TILEHEIGHT +1);
 		
-		ArrayList<Tile2> tilesArray = new ArrayList<Tile2>();
+		ArrayList<Tile> tilesArray = new ArrayList<Tile>();
 		
 		for(int y = yStart;y < yEnd; y++){
 			for(int x = xStart; x < xEnd; x++){
@@ -177,13 +177,13 @@ public class World {
 		return tilesArray;
 	}
 
-	public Tile2 getTile(int x, int y){
+	public Tile getTile(int x, int y){
 		if(x < 0 || y < 0 || x >= width || y >= height){
-			return Tile2.errorTile;	
+			return Tile.errorTile;	
 		}
-		Tile2 t = tilesetManager.getTile(tilesetsInUse[worldTiles[x][y].getTilesetID()], worldTiles[x][y].getTileID());
+		Tile t = tilesetManager.getTile(tilesetsInUse[worldTiles[x][y].getTilesetID()], worldTiles[x][y].getTileID());
 		if(t == null){
-			return Tile2.errorTile;
+			return Tile.errorTile;
 		}
 		return t;
 	}

@@ -58,7 +58,4 @@ public class TileID {
 		this.tileID = tileID;
 	}
 	
-	
-	
-	
 }

@@ -51,7 +51,7 @@ public class TileSetManager {
 			
 	}
 	
-	public Tile2 getTile(String tilesetName, int id){
+	public Tile getTile(String tilesetName, int id){
 		return loadedTilesets.get(tilesetName).getTile(id);
 	}
 }

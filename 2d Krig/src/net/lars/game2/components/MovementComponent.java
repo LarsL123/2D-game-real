@@ -7,7 +7,7 @@ import org.lwjgl.util.vector.Vector2f;
 import net.lars.game2.component.Component;
 import net.lars.game2.entity.Entity;
 import net.lars.game2.game.Handler;
-import net.lars.game2.tiles.Tile2;
+import net.lars.game2.tiles.Tile;
 
 
 /**
@@ -52,23 +52,23 @@ public class MovementComponent extends Component{
 		Rectangle bounds = parent.getComponents(BoundingBoxComponent.class).getBounds();
 		
 		if(moveX > 0){//moving right
-			int tx = (int)(parent.getX() +  moveX + bounds.x + bounds.width)/Tile2.TILEWIDTH;
+			int tx = (int)(parent.getX() +  moveX + bounds.x + bounds.width)/Tile.TILEWIDTH;
 			
-			if(!collisionWithTile2(tx, (int) (parent.getY() + bounds.y +1)/Tile2.TILEWIDTH )&&
-					!collisionWithTile2(tx,(int) (parent.getY() + bounds.y + bounds.height -1)/Tile2.TILEWIDTH)){
+			if(!collisionWithTile2(tx, (int) (parent.getY() + bounds.y +1)/Tile.TILEWIDTH )&&
+					!collisionWithTile2(tx,(int) (parent.getY() + bounds.y + bounds.height -1)/Tile.TILEWIDTH)){
 				parent.increasePosition(new Vector2f(moveX, 0f));
 			}else{
-				parent.setX(tx * Tile2.TILEWIDTH - bounds.x - bounds.width);
+				parent.setX(tx * Tile.TILEWIDTH - bounds.x - bounds.width);
 			}
 				
 		}else if(moveX < 0){//moving left
-			int tx = (int)(parent.getX() + moveX + bounds.x)/Tile2.TILEWIDTH;
+			int tx = (int)(parent.getX() + moveX + bounds.x)/Tile.TILEWIDTH;
 				
-			if(!collisionWithTile2(tx, (int) (parent.getY() + bounds.y +1)/Tile2.TILEWIDTH )&&
-				!collisionWithTile2(tx,(int) (parent.getY() + bounds.y + bounds.height -1)/Tile2.TILEWIDTH)){
+			if(!collisionWithTile2(tx, (int) (parent.getY() + bounds.y +1)/Tile.TILEWIDTH )&&
+				!collisionWithTile2(tx,(int) (parent.getY() + bounds.y + bounds.height -1)/Tile.TILEWIDTH)){
 				parent.increasePosition(new Vector2f(moveX, 0f));
 			}else{
-				parent.setX(tx * Tile2.TILEWIDTH + bounds.x + bounds.width); 
+				parent.setX(tx * Tile.TILEWIDTH + bounds.x + bounds.width); 
 			}
 		}	
 	}
@@ -77,21 +77,21 @@ public class MovementComponent extends Component{
 		Rectangle bounds = parent.getComponents(BoundingBoxComponent.class).getBounds();
 		
 		if(moveY > 0){//moving down
-			int ty = (int)((parent.getY() + moveY + bounds.y + bounds.height)/Tile2.TILEWIDTH);
+			int ty = (int)((parent.getY() + moveY + bounds.y + bounds.height)/Tile.TILEWIDTH);
 				
-			if(!collisionWithTile2((int)(parent.getX() + bounds.x +1)/Tile2.TILEWIDTH, ty)&& !collisionWithTile2((int)(parent.getX() + bounds.x + bounds.width -1)/Tile2.TILEWIDTH, ty)){
+			if(!collisionWithTile2((int)(parent.getX() + bounds.x +1)/Tile.TILEWIDTH, ty)&& !collisionWithTile2((int)(parent.getX() + bounds.x + bounds.width -1)/Tile.TILEWIDTH, ty)){
 				parent.increasePosition(new Vector2f(0f, moveY));
 			}else{
-				parent.setY(ty * Tile2.TILEWIDTH - bounds.y - bounds.height);
+				parent.setY(ty * Tile.TILEWIDTH - bounds.y - bounds.height);
 			}
 		}else if(moveY < 0){//moving up
-			int ty = (int)((parent.getY() + moveY + bounds.y)/Tile2.TILEWIDTH);
+			int ty = (int)((parent.getY() + moveY + bounds.y)/Tile.TILEWIDTH);
 				
-			if(!collisionWithTile2((int)(parent.getX() + bounds.x +1)/Tile2.TILEWIDTH, ty)&& !collisionWithTile2((int)(parent.getX() + bounds.x + bounds.width -1)/Tile2.TILEWIDTH, ty)){
+			if(!collisionWithTile2((int)(parent.getX() + bounds.x +1)/Tile.TILEWIDTH, ty)&& !collisionWithTile2((int)(parent.getX() + bounds.x + bounds.width -1)/Tile.TILEWIDTH, ty)){
 				parent.increasePosition(new Vector2f(0f, moveY));
 				
 			}else{
-				parent.setY(ty * Tile2.TILEWIDTH + bounds.x + bounds.width);
+				parent.setY(ty * Tile.TILEWIDTH + bounds.x + bounds.width);
 			}
 		}
 	

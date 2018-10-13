@@ -28,7 +28,7 @@ public class Tileset {
 	
 	//Private
 	private int tilesetID;
-	private ArrayList<Tile2> tiles = new ArrayList<Tile2>();
+	private ArrayList<Tile> tiles = new ArrayList<Tile>();
 	private Texture tileSet;
 	
 	//TODO not the prettyest
@@ -50,7 +50,7 @@ public class Tileset {
 		}
 	}
 	
-	private ArrayList<Tile2> loadTileset(MyFile infoSheet) throws Exception{
+	private ArrayList<Tile> loadTileset(MyFile infoSheet) throws Exception{
 		BufferedReader infoSheetReader = infoSheet.getReader();
 
 		String line;
@@ -67,7 +67,7 @@ public class Tileset {
 			
 			//Creating the tile.
 			String[] xyPosition = currentLine[0].split(",");
-			Tile2 t = new Tile2((float)(Integer.parseInt(xyPosition[0]) * tileSizeInTextureCoords), (float)(Integer.parseInt(xyPosition[1]) * tileSizeInTextureCoords));
+			Tile t = new Tile((float)(Integer.parseInt(xyPosition[0]) * tileSizeInTextureCoords), (float)(Integer.parseInt(xyPosition[1]) * tileSizeInTextureCoords));
 			
 			//Adding all values
 			for(int i = 1; i < currentLine.length; i++){
@@ -84,7 +84,7 @@ public class Tileset {
 	}
 	
 	
-	public Tile2 getTile(int id){
+	public Tile getTile(int id){
 		return tiles.get(id);
 		
 	}
@@ -112,7 +112,7 @@ public class Tileset {
 		this.tilesetID += incrementer;
 	}
 
-	public ArrayList<Tile2> getTiles() {
+	public ArrayList<Tile> getTiles() {
 		return tiles;
 	}
 }

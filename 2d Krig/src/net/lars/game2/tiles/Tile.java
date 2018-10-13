@@ -18,12 +18,12 @@ import net.lars.game2.utils.Utils;
  * @Suggestions:
  *		Better ticking system ??
  */
-public class Tile2 {
+public class Tile {
 	
 	
 	public static final int TILEWIDTH = 32, TILEHEIGHT = 32;
 	
-	public static Tile2 errorTile = new Tile2((float)(10* Tileset.tileSizeInTextureCoords), (float)(10*Tileset.tileSizeInTextureCoords));
+	public static Tile errorTile = new Tile((float)(10* Tileset.tileSizeInTextureCoords), (float)(10*Tileset.tileSizeInTextureCoords));
 	
 	
 	//Class
@@ -32,7 +32,7 @@ public class Tile2 {
 	private float x,y;
 	
 	
-	public Tile2(float x, float y){
+	public Tile(float x, float y){
 		this.x = x; 
 		this.y = y;
 		isSolid = false;
