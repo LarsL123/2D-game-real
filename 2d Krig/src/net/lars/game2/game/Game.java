@@ -82,15 +82,10 @@ public class Game implements Runnable {
 	private void init(){
 		
 		Assets2.init();
-		
-		renderer = new MasterRenderer(handler, loader);
-
-
-		
-		renderData = new RenderData();
-		
 		handler = new Handler(this);
 		
+		renderer = new MasterRenderer(handler, loader);
+		renderData = new RenderData();
 		camera = new GameCamera(this, handler, 0, 0);
 		
 		gameState = new GameState(handler);

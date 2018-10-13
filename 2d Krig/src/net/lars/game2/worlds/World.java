@@ -37,13 +37,13 @@ import net.lars.game2.utils.fileUtils.MyFile;
  *
  */
 public class World {
+	
+	private Handler handler;
 
 	private Vector2f spawnPoint;
 	private int width, height;
 	private TileID[][] worldTiles;
-	private Handler handler;
-	private String[] tilesetsInUse;
-	
+
 	/**
 	 * 	True if the members of the world should read input from the keyboard, and false if another task is reading form the keyBoard.
 	 * 	Used by all members of world.
@@ -57,6 +57,7 @@ public class World {
 	
 	//Tilesets
 	private TileSetManager tilesetManager;
+	private String[] tilesetsInUse;
 
 	//Items
 	private ItemManager itemManager;
@@ -140,22 +141,40 @@ public class World {
 
 	}
 	
-	public ArrayList<Vector2f> getTileRenderData() {
+	public ArrayList<Tile2> getTileRenderData() {
 		int xStart = (int) Math.max(0, handler.getGameCamera().getxOffset() / Tile2.TILEHEIGHT);
 		int xEnd = (int)Math.min(width, (handler.getGameCamera().getxOffset() + handler.getWidth()) / Tile2.TILEHEIGHT +1);
 		int yStart = (int) Math.max(0, handler.getGameCamera().getyOffset() / Tile2.TILEHEIGHT);
 		int yEnd = (int)Math.min(height, (handler.getGameCamera().getyOffset() + handler.getHeight())/ Tile2.TILEHEIGHT +1);
 		
-		ArrayList<Vector2f> positions = new ArrayList<Vector2f>();
+		ArrayList<Tile2> tilesArray = new ArrayList<Tile2>();
 		
 		for(int y = yStart;y < yEnd; y++){
 			for(int x = xStart; x < xEnd; x++){
-				positions.add(new Vector2f((float )x, (float)y));
-				
+				tilesArray.add(getTile(x, y));
 //				getTile(x, y).render(g, (int)(x * Tile.TILESIZE - handler.getGameCamera().getxOffset()),(int) (y * Tile.TILESIZE - handler.getGameCamera().getyOffset()));
 			}
 		}
-		return positions;
+		System.out.println("111");
+		return tilesArray;
+	}
+	
+	public ArrayList<Tile2> getTileRenderDataa() {
+		int xStart = (int) Math.max(0, handler.getGameCamera().getxOffset() / Tile2.TILEHEIGHT);
+		int xEnd = (int)Math.min(width, (handler.getGameCamera().getxOffset() + handler.getWidth()) / Tile2.TILEHEIGHT +1);
+		int yStart = (int) Math.max(0, handler.getGameCamera().getyOffset() / Tile2.TILEHEIGHT);
+		int yEnd = (int)Math.min(height, (handler.getGameCamera().getyOffset() + handler.getHeight())/ Tile2.TILEHEIGHT +1);
+		
+		ArrayList<Tile2> tilesArray = new ArrayList<Tile2>();
+		
+		for(int y = yStart;y < yEnd; y++){
+			for(int x = xStart; x < xEnd; x++){
+				tilesArray.add(getTile(x, y));
+//				getTile(x, y).render(g, (int)(x * Tile.TILESIZE - handler.getGameCamera().getxOffset()),(int) (y * Tile.TILESIZE - handler.getGameCamera().getyOffset()));
+			}
+		}
+		System.out.println("111");
+		return tilesArray;
 	}
 
 	public Tile2 getTile(int x, int y){

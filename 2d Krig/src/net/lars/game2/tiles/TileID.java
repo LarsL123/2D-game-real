@@ -46,7 +46,7 @@ public class TileID {
 		return tilesetID;
 	}
 
-	public void setTilesetIU(int tilesetID) {
+	public void setTilesetID(int tilesetID) {
 		this.tilesetID = tilesetID;
 	}
 

@@ -9,7 +9,7 @@ in vec2 firstXY;
 out vec2 textureCoords;
 
 //A constant array of texture offsets. It is a uniform because it is a lot faster on the hardware. I don't really know why...
-uniform vec2 textureCoordsVec2Array[4] = vec2[](vec2(0f, 0.25f), vec2(0f,0f), vec2(0.25f,0.25f), vec2(0.25f, 0f));
+uniform vec2 textureCoordsVec2Array[4] = vec2[](vec2(0f, 0.05f), vec2(0f,0f), vec2(0.05f,0.05f), vec2(0.05f, 0f));
 
 uniform mat4 orthoMatrix;
 uniform float tileWidth = 50;

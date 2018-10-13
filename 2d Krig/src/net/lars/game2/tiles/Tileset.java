@@ -2,6 +2,9 @@ package net.lars.game2.tiles;
 
 import java.io.BufferedReader;
 import java.util.ArrayList;
+
+import net.lars.game2.engine.textures.Texture;
+import net.lars.game2.graphics.Assets2;
 import net.lars.game2.graphics.ImageLoader;
 import net.lars.game2.graphics.SpriteSheet;
 import net.lars.game2.utils.fileUtils.MyFile;
@@ -26,17 +29,20 @@ public class Tileset {
 	//Private
 	private int tilesetID;
 	private ArrayList<Tile2> tiles = new ArrayList<Tile2>();
+	private Texture tileSet;
 	
 	//TODO not the prettyest
 	//Accessed by the Tile2 class, so public static
-	public static double tileSizeInTextureCoords = 0.04545454545000000;
+//	public static double tileSizeInTextureCoords = 0.04545454545000000;
+	public static double tileSizeInTextureCoords = 0.05;
 	
 	
 	
 	public Tileset(MyFile imageSheet, MyFile infoSheet) {
 		try {
-			System.out.println(tileSizeInTextureCoords);
-			loadTileset(imageSheet, infoSheet);
+			//Not the way it should be done.
+			tileSet = Assets2.loadNearestTexture("res" + imageSheet.getPath());
+			loadTileset(infoSheet);
 			tilesetID = 0;
 		} catch (Exception e) {
 			System.err.println("Was not able to load tilset");
@@ -44,11 +50,9 @@ public class Tileset {
 		}
 	}
 	
-	private ArrayList<Tile2> loadTileset(MyFile imageSheet, MyFile infoSheet) throws Exception{
-		SpriteSheet sheet = new SpriteSheet(ImageLoader.loadImage(imageSheet.getPath()));
+	private ArrayList<Tile2> loadTileset(MyFile infoSheet) throws Exception{
 		BufferedReader infoSheetReader = infoSheet.getReader();
-		
-		
+
 		String line;
 		line = infoSheetReader.readLine();
 		do{
@@ -63,7 +67,6 @@ public class Tileset {
 			
 			//Creating the tile.
 			String[] xyPosition = currentLine[0].split(",");
-//			BufferedImage texture = sheet.crop(Integer.parseInt(xyPosition[0]) * Assets.tileSize, Integer.parseInt(xyPosition[1]) * Assets.tileSize, Assets.tileSize, Assets.tileSize);
 			Tile2 t = new Tile2((float)(Integer.parseInt(xyPosition[0]) * tileSizeInTextureCoords), (float)(Integer.parseInt(xyPosition[1]) * tileSizeInTextureCoords));
 			
 			//Adding all values
@@ -84,6 +87,10 @@ public class Tileset {
 	public Tile2 getTile(int id){
 		return tiles.get(id);
 		
+	}
+	
+	public Texture getTilsetTexture() {
+		return this.tileSet;
 	}
 	
 	public int getTilesetID() {

@@ -215,11 +215,11 @@ public class Assets2 {
 //
 	}
 
-	private static Texture loadGuiTexture(String name) {
+	public static Texture loadGuiTexture(String name) {
 		return Texture.createNewTexture(new MyFile(name)).noFiltering().clampEdges().create();
 	}
 	
-	private static Texture loadNearestTexture(String name) {
+	public static Texture loadNearestTexture(String name) {
 		return Texture.createNewTexture(new MyFile(name)).nearestFiltering().clampEdges().create();
 	}
 

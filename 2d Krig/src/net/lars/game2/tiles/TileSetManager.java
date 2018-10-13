@@ -54,12 +54,4 @@ public class TileSetManager {
 	public Tile2 getTile(String tilesetName, int id){
 		return loadedTilesets.get(tilesetName).getTile(id);
 	}
-	
-		/*0
-		 * Has a list of all Tilesets. 
-		 * Is responsible for loading and unloading tilsets,
-		 * 
-		 * Needs to be able to find the correct tilset when a user asks for a tile; Exapel Call: 20:13. Means get Tilesett 20 and tile 13 in that tileset
-		 * 
-		 */
 }

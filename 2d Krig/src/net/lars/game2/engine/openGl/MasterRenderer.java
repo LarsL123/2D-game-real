@@ -65,7 +65,7 @@ public class MasterRenderer {
 	
 	private TileRenderer tileRenderer;
 	
-	private Texture tileTexture = Assets2.tree_one;
+
 	
 	public MasterRenderer(Handler handler, Loader loader) {
 		//LoadProjectionMatrix
@@ -80,6 +80,7 @@ public class MasterRenderer {
 	public void render(RenderData data, GameCamera camera) {
 		
 //		//TODO load camera matrix
+		//not actually using the texture.
 		tileRenderer.render(Assets2.testTileSet);
 		
 		

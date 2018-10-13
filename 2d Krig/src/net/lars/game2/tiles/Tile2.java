@@ -51,6 +51,14 @@ public class Tile2 {
 		this.isSolid = isSolid;
 	}
 	
+	public float getX() {
+		return this.x;
+	}
+	
+	public float getY() {
+		return this.y;
+	}
+	
 	public void setValue(String id, String value){
 		switch(id){
 		case "isSolid":

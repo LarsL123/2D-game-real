@@ -1,6 +1,7 @@
 package net.lars.game2.tiles.tileRendering;
 
 import java.nio.FloatBuffer;
+import java.util.ArrayList;
 import java.util.Random;
 
 import org.lwjgl.BufferUtils;
@@ -15,6 +16,9 @@ import net.lars.game2.engine.openGl.Loader;
 import net.lars.game2.engine.shaders.renderingTemplate.Renderer;
 import net.lars.game2.engine.textures.Texture;
 import net.lars.game2.game.Handler;
+import net.lars.game2.graphics.Assets2;
+import net.lars.game2.tiles.Tile2;
+import net.lars.game2.tiles.Tileset;
 
 
 
@@ -38,9 +42,9 @@ public class TileRenderer extends Renderer{
 	
 	private int vbo;
 
-	private float[] tiles;
-
 	private TileShader shader = new TileShader();
+	
+	private Texture t = Assets2.loadNearestTexture("res/textures/tileSets/world1tilest.png");
 	
 	public TileRenderer(Handler handler, Loader loader, Matrix4f orthoMatrix) {
 		super(handler, loader);
@@ -55,16 +59,7 @@ public class TileRenderer extends Renderer{
 		shader.start();
 		shader.loadOrthoMatrix(orthoMatrix);
 		shader.loadScale(200);
-		shader.stop();
-		
-		//
-		tiles = new float[128];
-		float[] possiblepositions = {0f, 0.25f, 0.50f, 0.75f};
-		for(int i = 0; i< 128; i++) {
-			tiles[i] = possiblepositions[(int) (Math.random() * 4)];
-		}
-		
-		
+		shader.stop();	
 	}
 	
 	public void prepare() {
@@ -75,16 +70,22 @@ public class TileRenderer extends Renderer{
 	}
 	
 	public void render(Texture texture) {
-		prepare();
-		prepareTexture(texture);
+		prepare();	
+		prepareTexture(t);
 		shader.start();
 		int numberOfTiles = 64;
 		float[] vboData = new float[INSTANCED_DATA_LENGTH * numberOfTiles];
 		//Add positions and tile tetxureCoords
-		vboData = tiles;
+		int pointer = 0;
 
+		ArrayList<Tile2> til = handler.getWorld().getTileRenderData();
+		for(Tile2 t : til) {
+			vboData[pointer++] = t.getX();
+			vboData[pointer++] = t.getY();
+		}
 		
-		
+			
+
 		loader.updateVbo(vbo, vboData, buffer);
 		//Stet the last parameter to the number of tiles(instaces)
 		GL31.glDrawArraysInstanced(GL11.GL_TRIANGLE_STRIP, 0, model.getVertextCount(), numberOfTiles);
