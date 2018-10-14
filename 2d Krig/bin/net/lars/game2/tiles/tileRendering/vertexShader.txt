@@ -4,7 +4,7 @@
 in vec2 positions;
 
 //instanced attribute, changes per instance.
-in vec2 firstXY;
+in vec2 textureCoordsIn;
 
 out vec2 textureCoords;
 
@@ -25,5 +25,5 @@ void main(void){
 	gl_Position = orthoMatrix * vec4(positions.x + chunkPosition.x  + tileWidth * row, positions.y + chunkPosition.y  + tileWidth* column , 0.0, 1.0);
 	
 	
-	textureCoords = firstXY + textureCoordsVec2Array[gl_VertexID];
+	textureCoords = textureCoordsIn + textureCoordsVec2Array[gl_VertexID];
 }

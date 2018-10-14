@@ -2,7 +2,6 @@ package net.lars.game2.tiles.tileRendering;
 
 import java.nio.FloatBuffer;
 import java.util.ArrayList;
-import java.util.Random;
 
 import org.lwjgl.BufferUtils;
 import org.lwjgl.opengl.GL11;
@@ -18,17 +17,11 @@ import net.lars.game2.engine.shaders.renderingTemplate.Renderer;
 import net.lars.game2.engine.textures.Texture;
 import net.lars.game2.game.Handler;
 import net.lars.game2.graphics.Assets2;
-import net.lars.game2.tiles.Tile;
-import net.lars.game2.tiles.TileID;
 import net.lars.game2.worlds.chunk.Chunk;
 
 
 
 public class TileRenderer extends Renderer{
-	
-	Random random = new Random();
-	
-	private static final float[] TEXTURE_COORDS_THING = { 0,0 ,0, 0, 0.25f, 0.25f, 0.25f, 0.25f };
 	/**
 	 * All four vertices. Rendering using triangle strips so only four.
 	 */
@@ -54,9 +47,7 @@ public class TileRenderer extends Renderer{
 		this.vbo = loader.createEmptyVBO(INSTANCED_DATA_LENGTH * MAX_INSTANCES);
 		//Add the primitives cordinastes.
 		model = loader.loadToVAO(POSITIONS_IN_PIXELS, 2);
-		//Add the the offset to texture thing.
-		loader.addAttributeToVAO(model.getVaoID(),3, 2, TEXTURE_COORDS_THING);
-		//Stores the grid position and texture of the thing.
+		//Setup an instanced attribute. Contains the vboData array.
 		loader.addinstacedAttribute(model.getVaoID(), vbo, 1, 2, INSTANCED_DATA_LENGTH, 0);
 		
 		shader.start();
@@ -73,15 +64,14 @@ public class TileRenderer extends Renderer{
 	}
 	
 	public void render(Texture texture) {
-//		ArrayList<Chunk> chunks 
 		prepare();	
 		prepareTexture(t);
 		shader.start();
-//		for(Chunk c : chunks) {
-//			renderChunk(c);
-//		}
 		
-		renderChunk(new Chunk(new Vector2f(0f,0f)));
+		ArrayList<Chunk> chunks = handler.getWorld().getTileRenderData();
+		for(Chunk c : chunks) {
+			renderChunk(c);
+		}
 		shader.stop();
 		unbindModel();
 	}
@@ -91,10 +81,12 @@ public class TileRenderer extends Renderer{
 		//Add positions and tile tetxureCoords
 		int pointer = 0;
 
-		ArrayList<Tile> til = handler.getWorld().getTileRenderData();
-		for(Tile t : til) {
-			vboData[pointer++] = t.getX();
-			vboData[pointer++] = t.getY();
+		for (int y = 0; y < 8; y++) {
+			for (int x = 0; x < 8; x++) {
+				Vector2f v = handler.getWorld().getTile(chunk.getTiles()[x][y]).getPosition();
+				vboData[pointer++] = v.x;
+				vboData[pointer++] = v.y;
+			}
 		}
 		
 //		TileID[][] tilesa = chunk.getTiles();

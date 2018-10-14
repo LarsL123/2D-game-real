@@ -1,4 +1,4 @@
-package net.lars.game2.ui.exeptions;
+package net.lars.game2.ui.exceptions;
 
 /**
  * 	

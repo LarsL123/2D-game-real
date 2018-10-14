@@ -31,27 +31,20 @@ public class Chunk {
 	private TileID[][] tiles;
 	
 	/**
-	 * The world position of the top left in in the chunk;
+	 * The position of the top left tile in in the chunk;
 	 */
 	private Vector2f worldPosition;
 	
-	public Chunk(Vector2f worldposition) {
+	public Chunk(Vector2f worldposition, TileID[][] tiles) {
 		this.worldPosition = worldposition;
-		
-		tiles = new TileID[7][7];
-		
-		for(int x = 0; x < 8; x++) {
-			for(int y = 0; y<8; y++) {
-				//add tiles
-			}
-		}
+		this.tiles = tiles;
 	}
 	
 	/**
 	 * 
 	 *@Info
 	 *
-	 * Get a tile from this chunk. This in is not supposerd to be used by other packages- @see {@link ChunkManager #getTile(int, int)}
+	 * Get a tile from this chunk. This in is not supposed to be used by other packages- @see {@link ChunkManager #getTile(int, int)}
 	 *
 	 * @param x
 	 * @param y

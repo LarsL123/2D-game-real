@@ -1,5 +1,6 @@
 package net.lars.game2.tiles;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import net.lars.game2.game.Handler;
@@ -22,42 +23,33 @@ import net.lars.game2.utils.fileUtils.MyFile;
  *
  */
 public class TileSetManager {
-	
-	private HashMap<String, Tileset> loadedTilesets;
+	private ArrayList<Tileset> loadedTilesets;
 	private Handler handler;
 	
 	
 	public TileSetManager(Handler handler){
 		this.handler = handler;
-		loadedTilesets = new HashMap<String, Tileset>();
+		loadedTilesets = new ArrayList<Tileset>();
 	}
 	
 	public void addTileset(String name){
 		Tileset t = new Tileset(new MyFile(FileUtils.TILESET_FOLDER + name + ".png"),new MyFile( FileUtils.TILESET_FOLDER + name + ".txt"));
-		if(loadedTilesets.get(name) == null) {
-			loadedTilesets.put(name, t);
-		}else {
-			loadedTilesets.get(name).incrementTilesetID(1);
-		}
-		
+		t.setTilesetID(loadedTilesets.size());
+		loadedTilesets.add(t);
+
 	}
 	
-	public void removeTileset(String name){
-		if(loadedTilesets.get(name).getTilesetID() <= 1) {
-			loadedTilesets.remove(name);
-		}else {
-			loadedTilesets.get(name).incrementTilesetID(-1);
-		}
+	public void removeTileset(int tilesetID){
+		loadedTilesets.remove(tilesetID);
 			
 	}
 	
-	public Tile getTile(String tilesetName, int id){
-		return loadedTilesets.get(tilesetName).getTile(id);
+	public Tile getTile(int tileSetID, int tileId){
+		return loadedTilesets.get(tileSetID).getTile(tileId);
 	}
 	
 	//TODO implement this
 	public Tile getTile(TileID i ){
-		return null;
-//		return loadedTilesets.get(tilesetName).getTile(id);
+		return loadedTilesets.get(i.getTilesetID()).getTile(i.getTileID());
 	}
 }

@@ -32,7 +32,7 @@ public class TileShader extends ShaderProgram{
 	@Override
 	protected void bindAttributes() {
 		super.bindAttribute(0, "positions");
-		super.bindAttribute(1, "firstXY");
+		super.bindAttribute(1, "textureCoordsIn");
 	}
 	
 	public void loadChunkPosition(Vector2f position) {

@@ -8,7 +8,7 @@ import org.lwjgl.util.vector.Vector2f;
 import net.lars.game2.game.Handler;
 import net.lars.game2.ui.UIObject;
 import net.lars.game2.ui.UIUtils;
-import net.lars.game2.ui.exeptions.TooBigUIObjectExepion;
+import net.lars.game2.ui.exceptions.TooBigUIObjectExepion;
 
 public class UIToolbarHorisontal extends UIToolBar{
 

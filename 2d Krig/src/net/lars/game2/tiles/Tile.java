@@ -1,5 +1,7 @@
 package net.lars.game2.tiles;
 
+import org.lwjgl.util.vector.Vector2f;
+
 import net.lars.game2.utils.Utils;
 
 /**
@@ -29,12 +31,11 @@ public class Tile {
 	//Class
 	private boolean isSolid;
 	
-	private float x,y;
+	private Vector2f pos;
 	
 	
 	public Tile(float x, float y){
-		this.x = x; 
-		this.y = y;
+		pos = new Vector2f(x, y);
 		isSolid = false;
 	}
 
@@ -52,11 +53,15 @@ public class Tile {
 	}
 	
 	public float getX() {
-		return this.x;
+		return this.pos.x;
 	}
 	
 	public float getY() {
-		return this.y;
+		return this.pos.y;
+	}
+	
+	public Vector2f getPosition() {
+		return this.pos;
 	}
 	
 	public void setValue(String id, String value){
