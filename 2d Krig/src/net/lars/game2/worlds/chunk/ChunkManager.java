@@ -43,8 +43,6 @@ public class ChunkManager {
 	}
 	
 	public Chunk getChunk(int x, int y) throws NullPointerException{
-		x/= 8;
-		y/=8;
 		return chunks.get(x).get(y);
 	}
 	
@@ -78,7 +76,7 @@ public class ChunkManager {
 		}
 		reader.close();
 		
-		Chunk chunk = new Chunk(new Vector2f(chunkX * Chunk.CHUNK_SIZE, chunkY * Chunk.CHUNK_SIZE), tiles);
+		Chunk chunk = new Chunk(new Vector2f(chunkX,chunkY ), tiles);
 		
 		
 		HashMap<Integer, Chunk> currentChunks = new HashMap<Integer, Chunk>();

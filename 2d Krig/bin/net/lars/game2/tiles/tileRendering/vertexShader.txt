@@ -21,8 +21,10 @@ void main(void){
 	int row =  gl_InstanceID %  tilesPerRowAndColumn;
 	//Change to multiply. Probably faster.
 	int column = gl_InstanceID / tilesPerRowAndColumn;
+	
+	vec2 chunkPos = chunkPosition * tilesPerRowAndColumn * tileWidth;
 
-	gl_Position = orthoMatrix * vec4(positions.x + chunkPosition.x  + tileWidth * row, positions.y + chunkPosition.y  + tileWidth* column , 0.0, 1.0);
+	gl_Position = orthoMatrix * vec4(positions.x +chunkPos.x  + tileWidth * row, positions.y + chunkPos.y + tileWidth* column , 0.0, 1.0);
 	
 	
 	textureCoords = textureCoordsIn + textureCoordsVec2Array[gl_VertexID];

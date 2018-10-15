@@ -74,6 +74,7 @@ public class World {
 		
 		chunks = new ChunkManager();
 		try {
+			chunks.loadChunkToMemoy(1, 0, path);
 			chunks.loadChunkToMemoy(0, 0, path);
 		} catch (Exception e) {
 			System.err.println("Was not able to load wordl: " + path.getPath());
@@ -140,7 +141,7 @@ public class World {
 	}
 	
 	public ArrayList<Chunk> getTileRenderData() {
-//		int xStart = (int) Math.max(0, handler.getGameCamera().getxOffset() / Tile.TILEHEIGHT);
+		int xStart = (int) Math.max(0,(int) (handler.getGameCamera().getxOffset() / Tile.TILEHEIGHT))/8;
 //		int xEnd = (int)Math.min(width, (handler.getGameCamera().getxOffset() + handler.getWidth()) / Tile.TILEHEIGHT +1);
 //		int yStart = (int) Math.max(0, handler.getGameCamera().getyOffset() / Tile.TILEHEIGHT);
 //		int yEnd = (int)Math.min(height, (handler.getGameCamera().getyOffset() + handler.getHeight())/ Tile.TILEHEIGHT +1);
@@ -155,12 +156,9 @@ public class World {
 //		}
 		
 		ArrayList<Chunk> v = new ArrayList<Chunk>();
-		try {
-			v.add(chunks.getChunk(0, 0));
-		} catch (Exception e) {
-		}
 		
-		
+		v.add(chunks.getChunk(1, 0));
+		v.add(chunks.getChunk(0, 0));
 		return v;
 	}
 	

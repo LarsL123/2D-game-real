@@ -101,13 +101,12 @@ public class Game implements Runnable {
 	private void tick(){
 		MyKeyboard.getCurrentKeyboard().tick();
 		
-		if(MyKeyboard.getCurrentKeyboard().isKeyDown(Keyboard.KEY_W)) {
-			camera.move(0.3f, 0.3f);
-		}else {
-			camera.move(-0.3f,- 0.3f);
-		}
-		
-		
+//		if(MyKeyboard.getCurrentKeyboard().isKeyDown(Keyboard.KEY_W)) {
+//			camera.move(0.3f, 0.3f);
+//		}else {
+//			camera.move(-0.3f,- 0.3f);
+//		}
+			
 		if(State.getState() != null){
 			State.getState().tick();
 		}

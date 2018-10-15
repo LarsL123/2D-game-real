@@ -70,7 +70,9 @@ public class TileRenderer extends Renderer{
 		
 		ArrayList<Chunk> chunks = handler.getWorld().getTileRenderData();
 		for(Chunk c : chunks) {
-			renderChunk(c);
+			if(c != null) {
+				renderChunk(c);
+			}
 		}
 		shader.stop();
 		unbindModel();
@@ -88,15 +90,6 @@ public class TileRenderer extends Renderer{
 				vboData[pointer++] = v.y;
 			}
 		}
-		
-//		TileID[][] tilesa = chunk.getTiles();
-//		
-//		for(int x = 0; x<8; x++) {
-//			for(int y = 0; y<8; y++) {
-//				vboData[pointer++] = handler.getWorld().getTilesetManager().getTile("world1tiles", tilesa[x][y].getTileID()).getX();
-//				vboData[pointer++] = handler.getWorld().getTilesetManager().getTile("world1tiles", tilesa[x][y].getTileID()).getY();
-//			}		
-//		}
 
 		loader.updateVbo(vbo, vboData, buffer);
 		shader.loadChunkPosition(chunk.getWorldPosition());
