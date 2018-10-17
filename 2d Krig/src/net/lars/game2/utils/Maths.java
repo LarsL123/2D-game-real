@@ -3,7 +3,7 @@ package net.lars.game2.utils;
 import org.lwjgl.util.vector.Matrix4f;
 import org.lwjgl.util.vector.Vector2f;
 
-import net.lars.game2.game.GameCamera;
+import net.lars.game2.main.GameCamera;
 
 public class Maths {
 	

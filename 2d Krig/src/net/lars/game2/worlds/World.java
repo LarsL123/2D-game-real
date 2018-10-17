@@ -5,16 +5,17 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.security.cert.X509CRLEntry;
 import java.util.ArrayList;
 
 import org.lwjgl.util.vector.Vector2f;
 
 import net.lars.game2.entity.Caracter;
 import net.lars.game2.entity.EntityManager;
-import net.lars.game2.game.Handler;
-import net.lars.game2.game.RenderData;
 import net.lars.game2.graphics.Assets;
 import net.lars.game2.items.ItemManager;
+import net.lars.game2.main.Handler;
+import net.lars.game2.main.RenderData;
 import net.lars.game2.tiles.Tile;
 import net.lars.game2.tiles.TileID;
 import net.lars.game2.tiles.TileSetManager;
@@ -76,6 +77,7 @@ public class World {
 		try {
 			chunks.loadChunkToMemoy(1, 0, path);
 			chunks.loadChunkToMemoy(0, 0, path);
+			chunks.loadChunkToMemoy(2, 1, path);
 		} catch (Exception e) {
 			System.err.println("Was not able to load wordl: " + path.getPath());
 			e.printStackTrace();
@@ -118,66 +120,31 @@ public class World {
 	public void render(RenderData data){
 		//Entities
 		entityManager.render(data);
-		
-//		int xStart = (int) Math.max(0, handler.getGameCamera().getxOffset() / Tile.TILESIZE);
-//		int xEnd = (int)Math.min(width, (handler.getGameCamera().getxOffset() + handler.getWidth()) / Tile.TILESIZE +1);
-//		int yStart = (int) Math.max(0, handler.getGameCamera().getyOffset() / Tile.TILESIZE);
-//		int yEnd = (int)Math.min(height, (handler.getGameCamera().getyOffset() + handler.getHeight())/ Tile.TILESIZE +1);
-//		
-//		List<Vector2f> positions = new ArrayList<Vector2f>();
-//		
-//		for(int y = yStart;y < yEnd; y++){
-//			for(int x = xStart; x < xEnd; x++){
-//				positions.add(new Vector2f((float )x, (float)y));
-//				
-////				getTile(x, y).render(g, (int)(x * Tile.TILESIZE - handler.getGameCamera().getxOffset()),(int) (y * Tile.TILESIZE - handler.getGameCamera().getyOffset()));
-//			}
-//		}
-//		return  positions;
-//		//Items
-//		itemManager.render(g);
-		
-
 	}
 	
 	public ArrayList<Chunk> getTileRenderData() {
-		int xStart = (int) Math.max(0,(int) (handler.getGameCamera().getxOffset() / Tile.TILEHEIGHT))/8;
-//		int xEnd = (int)Math.min(width, (handler.getGameCamera().getxOffset() + handler.getWidth()) / Tile.TILEHEIGHT +1);
-//		int yStart = (int) Math.max(0, handler.getGameCamera().getyOffset() / Tile.TILEHEIGHT);
-//		int yEnd = (int)Math.min(height, (handler.getGameCamera().getyOffset() + handler.getHeight())/ Tile.TILEHEIGHT +1);
-//		
-//		ArrayList<Chunk> tilesArray = new ArrayList<Tile>();
-//		
-//		for(int y = yStart;y < yEnd; y++){
-//			for(int x = xStart; x < xEnd; x++){
-//				tilesArray.add(getTile(x, y));
-////				getTile(x, y).render(g, (int)(x * Tile.TILESIZE - handler.getGameCamera().getxOffset()),(int) (y * Tile.TILESIZE - handler.getGameCamera().getyOffset()));
-//			}
-//		}
+		int xStart = (int)(handler.getGameCamera().getxOffset() / Tile.TILEHEIGHT)/8;
+		int xEnd = (int)((handler.getGameCamera().getxOffset() + handler.getWidth()) / Tile.TILEHEIGHT)/8 + 1;
+		int yStart = (int) (handler.getGameCamera().getyOffset() / Tile.TILEHEIGHT)/8;
+		int yEnd = (int)((handler.getGameCamera().getyOffset() + handler.getHeight())/ Tile.TILEHEIGHT)/8 + 1;
 		
-		ArrayList<Chunk> v = new ArrayList<Chunk>();
+		System.out.println("Start: "  + handler.getGameCamera().getxOffset() +", " +  handler.getGameCamera().getyOffset());
+		System.out.println(xStart);
+		System.out.println(yStart);
+		System.out.println(xEnd);
+		System.out.println(yEnd);
 		
-		v.add(chunks.getChunk(1, 0));
-		v.add(chunks.getChunk(0, 0));
-		return v;
-	}
-	
-	public ArrayList<Tile> getTileRenderDataa() {
-		int xStart = (int) Math.max(0, handler.getGameCamera().getxOffset() / Tile.TILEHEIGHT);
-		int xEnd = (int)Math.min(width, (handler.getGameCamera().getxOffset() + handler.getWidth()) / Tile.TILEHEIGHT +1);
-		int yStart = (int) Math.max(0, handler.getGameCamera().getyOffset() / Tile.TILEHEIGHT);
-		int yEnd = (int)Math.min(height, (handler.getGameCamera().getyOffset() + handler.getHeight())/ Tile.TILEHEIGHT +1);
-		
-		ArrayList<Tile> tilesArray = new ArrayList<Tile>();
-		
+		ArrayList<Chunk> array = new ArrayList<Chunk>();
 		for(int y = yStart;y < yEnd; y++){
 			for(int x = xStart; x < xEnd; x++){
-				tilesArray.add(getTile(x, y));
-//				getTile(x, y).render(g, (int)(x * Tile.TILESIZE - handler.getGameCamera().getxOffset()),(int) (y * Tile.TILESIZE - handler.getGameCamera().getyOffset()));
+				array.add(chunks.getChunk(x, y));
 			}
 		}
-		return tilesArray;
+		
+
+		return array;
 	}
+	
 
 	public Tile getTile(TileID id){
 		Tile t = tilesetManager.getTile(id);
@@ -222,36 +189,6 @@ public class World {
 //		}
 //	}
 	
-//	/**
-//	 * 
-//	 * @Info:
-//	 * 		Loading the world from a world file. 
-//	 *
-//	 * @param path
-//	 * @throws Exception
-//	 */
-//	public void loadWorld(MyFile path) throws Exception{
-//		BufferedReader reader = path.getReader();
-//		String lines = Utils.loadFileAsString(reader);
-//
-//		String[] tokens = lines.split("\\s+");
-//		width = Utils.parseInt(tokens[0]);
-//		height = Utils.parseInt(tokens[1]);
-//		
-//		if(width != 8 && height != 8) {
-//			System.err.println("The chunk does not have the right size");
-//		}
-//		
-//		this.spawnPoint = new Vector2f(Float.parseFloat(tokens[2]), Float.parseFloat(tokens[3]));
-//		
-//		worldTiles = new TileID[width][height];
-//		for(int y =0;y < height; y++){
-//			for(int x = 0; x < width; x++){
-//				worldTiles[x][y] = new TileID(tokens[(x + y * width) + 4]);
-//			}
-//		}
-//		reader.close();
-//	}
 //	
 //	/*
 //	 * Creates a emty world-
@@ -272,7 +209,7 @@ public class World {
 	
 	
 	//Getters and setters
-	
+
 	public EntityManager getEntityManager() {
 		return entityManager;
 	}

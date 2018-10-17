@@ -7,12 +7,11 @@ import org.lwjgl.opengl.DisplayMode;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.PixelFormat;
 
+import net.lars.game2.main.Config;
+
 
 public class DisplayManager {
-	
-	public static final int WIDTH = 1280;
-	public static final int HEIGHT = 720;
-	private static final int FPS_CAP = 120;
+
 	
 	
 	public static void createDisplay() {
@@ -23,20 +22,20 @@ public class DisplayManager {
 		.withProfileCore(true);
 		
 		try {
-			Display.setDisplayMode(new DisplayMode(WIDTH, HEIGHT));
+			Display.setDisplayMode(new DisplayMode(Config.WIDTH , Config.HEIGHT));
 			Display.create(new PixelFormat(), attribs);
 			Display.setTitle("First 2D game");
 		} catch (LWJGLException e) {
 			e.printStackTrace();
 		}
 		
-		GL11.glViewport(0, 0, WIDTH, HEIGHT);
+		GL11.glViewport(0, 0, Config.WIDTH, Config.HEIGHT);
 		
 		
 	}
 	
 	public static void updateDisplay() {
-		Display.sync(FPS_CAP);
+		Display.sync(Config.FPS_CAP);
 		Display.update();
 		
 	}

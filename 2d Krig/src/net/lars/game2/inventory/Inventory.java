@@ -9,10 +9,10 @@ import javax.crypto.spec.IvParameterSpec;
 
 import org.lwjgl.input.Keyboard;
 
-import net.lars.game2.game.Handler;
 import net.lars.game2.graphics.Assets;
 import net.lars.game2.input.MyKeyboard;
 import net.lars.game2.items.Item;
+import net.lars.game2.main.Handler;
 
 /**
  * 	

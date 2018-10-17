@@ -6,7 +6,7 @@ import java.util.UUID;
 import net.lars.game2.component.Component;
 import net.lars.game2.entity.Entities;
 import net.lars.game2.entity.Entity;
-import net.lars.game2.game.Handler;
+import net.lars.game2.main.Handler;
 
 public class BoundingBoxComponent extends Component {
 	

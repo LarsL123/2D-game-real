@@ -12,7 +12,7 @@ import net.lars.game2.utils.fileUtils.MyFile;
 
 public class ChunkManager {
 	
-	private Map<Integer, HashMap<Integer, Chunk>> chunks = new HashMap<Integer, HashMap<Integer, Chunk>>();
+	private Map<Integer, HashMap<Integer, Chunk>> chunks  = new HashMap<Integer, HashMap<Integer, Chunk>>();
 	
 	/**
 	 * 	Get a tile using a world position.
@@ -42,8 +42,14 @@ public class ChunkManager {
 		
 	}
 	
-	public Chunk getChunk(int x, int y) throws NullPointerException{
-		return chunks.get(x).get(y);
+	public Chunk getChunk(int x, int y){
+		try {
+			return chunks.get(x).get(y);
+		} catch(NullPointerException  e){
+//			System.out.println(x +", "+ y +" Gave no chunk.");
+			return null;
+		}
+		
 	}
 	
 	public void deleteChunkFromMemory() {
@@ -83,5 +89,6 @@ public class ChunkManager {
 		currentChunks.put(chunkY, chunk);
 		chunks.put(chunkX, currentChunks);
 	}
+	
 	
 }

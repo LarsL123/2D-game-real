@@ -4,10 +4,10 @@ package net.lars.game2.states;
 import org.lwjgl.util.vector.Vector2f;
 
 import net.lars.game2.entity.Entity;
-import net.lars.game2.game.Handler;
-import net.lars.game2.game.RenderData;
 import net.lars.game2.graphics.Assets;
 import net.lars.game2.graphics.Assets2;
+import net.lars.game2.main.Handler;
+import net.lars.game2.main.RenderData;
 import net.lars.game2.utils.fileUtils.MyFile;
 import net.lars.game2.worlds.World;
 

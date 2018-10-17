@@ -3,7 +3,7 @@ package net.lars.game2.worlds;
 
 import java.awt.event.KeyEvent;
 
-import net.lars.game2.game.Handler;
+import net.lars.game2.main.Handler;
 import net.lars.game2.tiles.Tile;
 import net.lars.game2.tiles.TileID;
 import net.lars.game2.ui.UIManager;

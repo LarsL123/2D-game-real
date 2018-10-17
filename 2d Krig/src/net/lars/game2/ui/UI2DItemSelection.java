@@ -9,8 +9,8 @@ import java.util.ArrayList;
 import org.lwjgl.util.vector.Vector2f;
 
 import net.lars.game2.errorHandeling.ToLongArrayExeption;
-import net.lars.game2.game.Handler;
 import net.lars.game2.graphics.Assets;
+import net.lars.game2.main.Handler;
 
 /**
  * 	

@@ -5,8 +5,8 @@ import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
 import net.lars.game2.components.BoundingBoxComponent;
-import net.lars.game2.game.Handler;
 import net.lars.game2.graphics.Assets;
+import net.lars.game2.main.Handler;
 
 public class Item {
 	

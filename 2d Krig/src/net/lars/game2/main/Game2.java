@@ -1,3 +1,4 @@
+package net.lars.game2.main;
 //package net.lars.game2.game;
 //
 //import java.awt.Font;

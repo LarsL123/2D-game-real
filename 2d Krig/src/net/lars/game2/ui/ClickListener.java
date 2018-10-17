@@ -1,6 +1,6 @@
 package net.lars.game2.ui;
 
-import net.lars.game2.game.Handler;
+import net.lars.game2.main.Handler;
 
 /**
  * 	

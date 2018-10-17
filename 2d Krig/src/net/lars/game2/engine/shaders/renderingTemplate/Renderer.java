@@ -2,7 +2,7 @@ package net.lars.game2.engine.shaders.renderingTemplate;
 
 import net.lars.game2.engine.models.RawModel;
 import net.lars.game2.engine.openGl.Loader;
-import net.lars.game2.game.Handler;
+import net.lars.game2.main.Handler;
 
 
 

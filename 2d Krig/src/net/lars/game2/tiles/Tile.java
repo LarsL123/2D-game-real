@@ -23,7 +23,7 @@ import net.lars.game2.utils.Utils;
 public class Tile {
 	
 	
-	public static final int TILEWIDTH = 32, TILEHEIGHT = 32;
+	public static final int TILEWIDTH = 50, TILEHEIGHT = 50;
 	
 	public static Tile errorTile = new Tile((float)(10* Tileset.tileSizeInTextureCoords), (float)(10*Tileset.tileSizeInTextureCoords));
 	

@@ -1,4 +1,4 @@
-package net.lars.game2.game;
+package net.lars.game2.main;
 
 import java.awt.Font;
 import java.awt.FontMetrics;
@@ -17,6 +17,7 @@ import net.lars.game2.input.MyKeyboard;
 import net.lars.game2.states.GameState;
 import net.lars.game2.states.State;
 import net.lars.game2.tiles.tileRendering.TileRenderer;
+import net.lars.game2.utils.F3Information;
 
 /**
  * 	
@@ -56,7 +57,8 @@ public class Game implements Runnable {
 	
 	private boolean running = false;
 	private Thread thread;
-
+	
+	private F3Information f3Information;
 	
 	//states
 	public State gameState;
@@ -87,6 +89,7 @@ public class Game implements Runnable {
 		renderer = new MasterRenderer(handler, loader);
 		renderData = new RenderData();
 		camera = new GameCamera(this, handler, 0, 0);
+		f3Information = new F3Information(handler);
 		
 		gameState = new GameState(handler);
 		
@@ -110,23 +113,21 @@ public class Game implements Runnable {
 		if(State.getState() != null){
 			State.getState().tick();
 		}
+		f3Information.tick();
 	}
 	
 	private void render(){
 		if(State.getState() != null){
 			State.getState().render(renderData);
 		}
+		f3Information.display();
 		
 		//Clear screen colour buffer
 		GL11.glClearColor(1, 0, 0, 1);
 		GL11.glClear(GL11.GL_COLOR_BUFFER_BIT);
 		
 		renderer.render(renderData, camera);
-		
 
-		
-		
-		//End drawing
 
 	}
 
@@ -135,7 +136,7 @@ public class Game implements Runnable {
 		DisplayManager.createDisplay();
 		init();
 		
-		int fps = 120;
+		int fps = Config.FPS_CAP;
 		double timePerTick = 1000000000 / fps;
 		double delta = 0;
 		long now;

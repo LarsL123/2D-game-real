@@ -5,7 +5,7 @@ import org.lwjgl.util.vector.Vector4f;
 
 import net.lars.game2.engine.shaders.ShaderProgram;
 import net.lars.game2.entity.Entity;
-import net.lars.game2.game.GameCamera;
+import net.lars.game2.main.GameCamera;
 import net.lars.game2.utils.Maths;
 
 

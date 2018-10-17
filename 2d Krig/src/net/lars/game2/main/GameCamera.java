@@ -1,4 +1,4 @@
-package net.lars.game2.game;
+package net.lars.game2.main;
 
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.util.vector.Vector2f;

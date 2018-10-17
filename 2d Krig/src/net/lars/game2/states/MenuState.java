@@ -2,9 +2,9 @@
 
 import org.lwjgl.util.vector.Vector2f;
 
-import net.lars.game2.game.Handler;
-import net.lars.game2.game.RenderData;
 import net.lars.game2.graphics.Assets;
+import net.lars.game2.main.Handler;
+import net.lars.game2.main.RenderData;
 import net.lars.game2.ui.ClickListener;
 import net.lars.game2.ui.UIManager;
 import net.lars.game2.ui.tinyButtons.UIImageButton;

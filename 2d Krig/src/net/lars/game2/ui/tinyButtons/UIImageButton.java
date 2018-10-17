@@ -5,7 +5,7 @@ import java.awt.image.BufferedImage;
 
 import org.lwjgl.util.vector.Vector2f;
 
-import net.lars.game2.game.Handler;
+import net.lars.game2.main.Handler;
 import net.lars.game2.ui.ClickListener;
 import net.lars.game2.ui.UIObject;
 

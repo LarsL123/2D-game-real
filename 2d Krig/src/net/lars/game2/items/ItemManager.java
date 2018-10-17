@@ -4,7 +4,7 @@ import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import net.lars.game2.game.Handler;
+import net.lars.game2.main.Handler;
 
 public class ItemManager {
 	

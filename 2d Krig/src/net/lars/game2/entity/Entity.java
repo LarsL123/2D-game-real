@@ -7,8 +7,8 @@ import org.lwjgl.util.vector.Vector2f;
 import net.lars.game2.components.BoundingBoxComponent;
 import net.lars.game2.components.InformationComponent;
 import net.lars.game2.engine.textures.Texture;
-import net.lars.game2.game.Handler;
-import net.lars.game2.game.RenderData;
+import net.lars.game2.main.Handler;
+import net.lars.game2.main.RenderData;
 
 
 

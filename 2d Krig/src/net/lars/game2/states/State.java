@@ -1,7 +1,7 @@
 package net.lars.game2.states;
 
-import net.lars.game2.game.Handler;
-import net.lars.game2.game.RenderData;
+import net.lars.game2.main.Handler;
+import net.lars.game2.main.RenderData;
 
 /**
  * 	

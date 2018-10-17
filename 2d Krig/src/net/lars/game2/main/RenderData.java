@@ -1,4 +1,4 @@
-package net.lars.game2.game;
+package net.lars.game2.main;
 
 import java.util.ArrayList;
 import java.util.HashMap;

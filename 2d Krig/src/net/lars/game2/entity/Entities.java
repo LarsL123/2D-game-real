@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.UUID;
 
 import net.lars.game2.component.Component;
-import net.lars.game2.game.Handler;
+import net.lars.game2.main.Handler;
 
 
 /**

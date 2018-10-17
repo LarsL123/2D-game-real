@@ -1,4 +1,4 @@
-package net.lars.game2.game;
+package net.lars.game2.main;
 
 
 /**
@@ -23,7 +23,7 @@ public class Launcher {
 		
 //		OpenGlTester t = new OpenGlTester();
 //		t.testOpenGl();
-		Game game = new Game("Tile game !" , 1000, 700);
+		Game game = new Game("Tile game !" , Config.WIDTH, Config.HEIGHT);
 		game.start();
 	}
 }

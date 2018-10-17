@@ -6,10 +6,11 @@ import net.lars.game2.display.DisplayManager;
 import net.lars.game2.engine.textures.Texture;
 import net.lars.game2.entity.entityRendering.EntityRenderer;
 import net.lars.game2.entity.entityRendering.StaticShader;
-import net.lars.game2.game.GameCamera;
-import net.lars.game2.game.Handler;
-import net.lars.game2.game.RenderData;
 import net.lars.game2.graphics.Assets2;
+import net.lars.game2.main.Config;
+import net.lars.game2.main.GameCamera;
+import net.lars.game2.main.Handler;
+import net.lars.game2.main.RenderData;
 import net.lars.game2.tiles.tileRendering.TileRenderer;
 import net.lars.game2.utils.Maths;
 
@@ -58,7 +59,7 @@ public class MasterRenderer {
 	 *  		    -						-	
 	 *    1-1  		*-----------------------* 1,1
 	 **/
-	private Matrix4f orthographickProjectionMatrx = Maths.orthoProjectionMatrix(0.0f, DisplayManager.WIDTH, DisplayManager.HEIGHT, 0.0f, -1.0f, 1.0f);
+	private Matrix4f orthographickProjectionMatrx = Maths.orthoProjectionMatrix(0.0f, Config.WIDTH, Config.HEIGHT, 0.0f, -1.0f, 1.0f);
 	
 	private StaticShader shader = new StaticShader();
 	private EntityRenderer renderer;

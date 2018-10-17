@@ -3,7 +3,7 @@ package net.lars.game2.tiles;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import net.lars.game2.game.Handler;
+import net.lars.game2.main.Handler;
 import net.lars.game2.utils.fileUtils.FileUtils;
 import net.lars.game2.utils.fileUtils.MyFile;
 

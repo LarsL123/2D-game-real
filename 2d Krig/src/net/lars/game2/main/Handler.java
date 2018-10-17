@@ -1,4 +1,4 @@
-package net.lars.game2.game;
+package net.lars.game2.main;
 
 import net.lars.game2.input.MouseManager;
 import net.lars.game2.worlds.World;

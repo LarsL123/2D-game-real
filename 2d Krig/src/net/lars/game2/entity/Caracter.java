@@ -11,14 +11,14 @@ import org.lwjgl.util.vector.Vector2f;
 
 import net.lars.game2.components.BoundingBoxComponent;
 import net.lars.game2.components.MovementComponent;
-import net.lars.game2.game.Handler;
-import net.lars.game2.game.RenderData;
 import net.lars.game2.graphics.Animation;
 import net.lars.game2.graphics.Assets;
 import net.lars.game2.graphics.Assets2;
 import net.lars.game2.input.MyKeyboard;
 import net.lars.game2.inventory.Inventory;
 import net.lars.game2.items.Item;
+import net.lars.game2.main.Handler;
+import net.lars.game2.main.RenderData;
 import net.lars.game2.utils.F3Information;
 
 public class Caracter extends Entity {

@@ -4,9 +4,12 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 
-import net.lars.game2.game.Handler;
+import org.lwjgl.input.Keyboard;
+
 import net.lars.game2.graphics.Assets;
 import net.lars.game2.graphics.Text;
+import net.lars.game2.input.MyKeyboard;
+import net.lars.game2.main.Handler;
 
 /**
  * 	
@@ -14,7 +17,7 @@ import net.lars.game2.graphics.Text;
  * @Author LarsL123
  *
  * @Info:
- * 		Held by the character, lets you see a lot of technical information. Used mostly for debugging.
+ * 		Debugging tool. Displays information when pressing F3, like in Minecraft :-)
  *
  * @TODO:
  * 
@@ -22,6 +25,7 @@ import net.lars.game2.graphics.Text;
  *
  */
 public class F3Information {
+	
 	private Handler handler;
 	private boolean active;
 	
@@ -31,7 +35,7 @@ public class F3Information {
 	}
 	
 	public void tick(){
-		if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_F3)){
+		if(MyKeyboard.getCurrentKeyboard().isKeyDownThisFrame(Keyboard.KEY_F3)){
 			active = !active;
 		}
 		if(!active){
@@ -39,10 +43,9 @@ public class F3Information {
 		}
 	}
 	
-	public void render(Graphics g){
+	public void display(){
 		if(!active)
 			return;
-		Text.drawString(g, "Posison: x "+ (int) handler.getWorld().getEntityManager().getCaracter().getX() + " y " + +  (int) handler.getWorld().getEntityManager().getCaracter().getY(), 0, 20, false, Color.WHITE, Assets.font28);
-		
+		System.out.println("Pos: " + handler.getGameCamera().getxOffset() + ", " + handler.getGameCamera().getyOffset());
 	}
 }

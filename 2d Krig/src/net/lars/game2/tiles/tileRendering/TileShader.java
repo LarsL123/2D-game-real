@@ -14,6 +14,7 @@ public class TileShader extends ShaderProgram{
 	private int location_size;
 	private int location_tilesPerRowAndColumn;
 	private int location_chunkPosition;
+	private int location_cameraPos;
 	
 	
 
@@ -27,6 +28,7 @@ public class TileShader extends ShaderProgram{
 		location_size = super.getUniformLocation("scale");
 		location_tilesPerRowAndColumn = super.getUniformLocation("tilesPerRowAndColumn");
 		location_chunkPosition = super.getUniformLocation("chunkPosition");
+		location_cameraPos = super.getUniformLocation("cameraPos");
 	}
 
 	@Override
@@ -37,6 +39,10 @@ public class TileShader extends ShaderProgram{
 	
 	public void loadChunkPosition(Vector2f position) {
 		super.load2DVector(location_chunkPosition, position);
+	}
+	
+	public void loadCameraPosition(Vector2f pos) {
+		super.load2DVector(location_cameraPos, pos);
 	}
 	
 	public void loadOrthoMatrix(Matrix4f orthoMatrix) {

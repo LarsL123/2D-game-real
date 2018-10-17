@@ -15,8 +15,8 @@ import org.lwjgl.util.vector.Vector2f;
 import net.lars.game2.engine.openGl.Loader;
 import net.lars.game2.engine.shaders.renderingTemplate.Renderer;
 import net.lars.game2.engine.textures.Texture;
-import net.lars.game2.game.Handler;
 import net.lars.game2.graphics.Assets2;
+import net.lars.game2.main.Handler;
 import net.lars.game2.worlds.chunk.Chunk;
 
 
@@ -31,7 +31,7 @@ public class TileRenderer extends Renderer{
 	private static final int MAX_INSTANCES = 1000;
 	//How many floats loaded to each instance.
 	private static final int INSTANCED_DATA_LENGTH = 2;
-	private int numberOfTilesPerChunk = 64;
+	private int numberOfTilesPerChunk = Chunk.CHUNK_SIZE * Chunk.CHUNK_SIZE;
 	
 	//Reusable FloatBuffer.
 	private static final FloatBuffer buffer = BufferUtils.createFloatBuffer(MAX_INSTANCES * INSTANCED_DATA_LENGTH);
@@ -57,7 +57,7 @@ public class TileRenderer extends Renderer{
 	}
 	
 	public void prepare() {
-		//Bind the VAO.
+		//Bind setup.
 		GL30.glBindVertexArray(model.getVaoID());
 		GL20.glEnableVertexAttribArray(0);
 		GL20.glEnableVertexAttribArray(1);	
@@ -67,6 +67,8 @@ public class TileRenderer extends Renderer{
 		prepare();	
 		prepareTexture(t);
 		shader.start();
+		
+		shader.loadCameraPosition(handler.getGameCamera().getAsVector());
 		
 		ArrayList<Chunk> chunks = handler.getWorld().getTileRenderData();
 		for(Chunk c : chunks) {
@@ -83,8 +85,8 @@ public class TileRenderer extends Renderer{
 		//Add positions and tile tetxureCoords
 		int pointer = 0;
 
-		for (int y = 0; y < 8; y++) {
-			for (int x = 0; x < 8; x++) {
+		for (int y = 0; y < Chunk.CHUNK_SIZE; y++) {
+			for (int x = 0; x < Chunk.CHUNK_SIZE; x++) {
 				Vector2f v = handler.getWorld().getTile(chunk.getTiles()[x][y]).getPosition();
 				vboData[pointer++] = v.x;
 				vboData[pointer++] = v.y;
@@ -108,18 +110,6 @@ public class TileRenderer extends Renderer{
 		GL13.glActiveTexture(GL13.GL_TEXTURE0);
 		GL11.glBindTexture(GL11.GL_TEXTURE_2D, texture.getTextureID());
 	}
-	
-//	private void storeXYGridPosition(float [] data) {
-//		data[pointer++] = 10f;
-//		data[pointer++] = 10f;
-//	}
-//	
-//	
-//	private void storeXYTextureCoords(float[] data) {
-//		data[pointer++] = 1f;
-//		data[pointer++] = 1f;
-//		
-//	}
 
 	@Override
 	public void cleanUP() {

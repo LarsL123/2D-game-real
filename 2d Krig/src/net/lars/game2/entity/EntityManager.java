@@ -7,8 +7,8 @@ import java.util.UUID;
 
 import net.lars.game2.component.Component;
 import net.lars.game2.components.BoundingBoxComponent;
-import net.lars.game2.game.Handler;
-import net.lars.game2.game.RenderData;
+import net.lars.game2.main.Handler;
+import net.lars.game2.main.RenderData;
 
 public class EntityManager {
 	

@@ -7,10 +7,10 @@ import java.awt.event.MouseEvent;
 
 import org.lwjgl.util.vector.Vector2f;
 
-import net.lars.game2.game.Handler;
 import net.lars.game2.graphics.Assets;
 import net.lars.game2.graphics.Text;
 import net.lars.game2.input.KeyPrssedListener;
+import net.lars.game2.main.Handler;
 
 /**
  * 	

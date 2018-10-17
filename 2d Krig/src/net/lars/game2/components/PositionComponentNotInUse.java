@@ -1,7 +1,7 @@
 package net.lars.game2.components;
 
 import net.lars.game2.component.Component;
-import net.lars.game2.game.Handler;
+import net.lars.game2.main.Handler;
 
 //NOT IN USE!!!!!!
 
