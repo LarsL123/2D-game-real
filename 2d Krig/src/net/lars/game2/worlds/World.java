@@ -1,25 +1,17 @@
 package net.lars.game2.worlds;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.security.cert.X509CRLEntry;
 import java.util.ArrayList;
 
 import org.lwjgl.util.vector.Vector2f;
 
 import net.lars.game2.entity.Caracter;
 import net.lars.game2.entity.EntityManager;
-import net.lars.game2.graphics.Assets;
 import net.lars.game2.items.ItemManager;
 import net.lars.game2.main.Handler;
 import net.lars.game2.main.RenderData;
 import net.lars.game2.tiles.Tile;
 import net.lars.game2.tiles.TileID;
 import net.lars.game2.tiles.TileSetManager;
-import net.lars.game2.utils.Utils;
 import net.lars.game2.utils.fileUtils.MyFile;
 import net.lars.game2.worlds.chunk.Chunk;
 import net.lars.game2.worlds.chunk.ChunkManager;
@@ -73,13 +65,12 @@ public class World {
 		this.handler = handler;
 		this.file = path;
 		
-		chunks = new ChunkManager();
+		chunks = new ChunkManager(handler);
 		try {
-			chunks.loadChunkToMemoy(1, 0, path);
-			chunks.loadChunkToMemoy(0, 0, path);
-			chunks.loadChunkToMemoy(2, 1, path);
+			chunks.loadChunkToMemoy(0, 0);
+			chunks.loadChunkToMemoy(1, 0);
 		} catch (Exception e) {
-			System.err.println("Was not able to load wordl: " + path.getPath());
+			System.err.println("Was not able to load wordl: ");
 			e.printStackTrace();
 		}
 		
@@ -143,6 +134,24 @@ public class World {
 		
 
 		return array;
+	} 
+	
+	public void doChunkLoading() {
+		int xStart = (int)(handler.getGameCamera().getxOffset() / Tile.TILEHEIGHT)/8 - 8;
+		int xEnd = (int)((handler.getGameCamera().getxOffset() + handler.getWidth()) / Tile.TILEHEIGHT)/8 + 8;
+		int yStart = (int) (handler.getGameCamera().getyOffset() / Tile.TILEHEIGHT)/8 - 8;
+		int yEnd = (int)((handler.getGameCamera().getyOffset() + handler.getHeight())/ Tile.TILEHEIGHT)/8 + 8;
+		
+		
+		
+		for(int y = yStart;y < yEnd; y++){
+			for(int x = xStart; x < xEnd; x++){
+				if(chunks.getChunk(x, y) == null) {
+					
+				}
+			}
+		}
+		
 	}
 	
 
@@ -233,22 +242,6 @@ public class World {
 	public void setShouldReadInput(boolean shouldReadInput) {
 		this.shouldReadInput = shouldReadInput;
 	}
-
-//	/**
-//	 * 
-//	 * @Info:
-//	 * 		kind of hard to use, not happy with it...
-//	 * 
-//	 *
-//	 * @param x
-//	 * @param y
-//	 * @param tileset
-//	 * 		The name of the tileset you want to use.
-//	 * @param id
-//	 */
-//	public void setWorldTile(int x, int y, String tileset, int id) {
-//		this.worldTiles[x][y] = new TileID(tileset +  ":" + id);
-//	}
 	
 	public TileSetManager getTilesetManager() {
 		return this.tilesetManager;

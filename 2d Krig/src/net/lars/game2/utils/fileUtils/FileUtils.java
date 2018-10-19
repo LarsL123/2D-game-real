@@ -18,5 +18,7 @@ public class FileUtils {
 	public static final String FILE_SEPARATOR = "/";
 	public static final String SEPARATOR = ";";
 	public static String RES_FOLDER = "res";
-	public static final String TILESET_FOLDER ="textures/tileSets/";
+	public static final String TILESET_FOLDER ="textures" + FILE_SEPARATOR +"tileSets" + FILE_SEPARATOR;
+	public static final String WORLD_FOLDER = "worlds" + FILE_SEPARATOR;
+	
 }

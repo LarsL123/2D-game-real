@@ -1,9 +1,12 @@
 package net.lars.game2.utils.fileUtils;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
+
+import javax.management.ListenerNotFoundException;
 
 /**
  * 	
@@ -86,5 +89,41 @@ public class MyFile {
 			System.err.println("Couldn't get reader for " + path);
 			throw e;
 		}
+	}
+	
+	/**
+	 * 
+	 *@Info
+	 *		Checks if the file exists.
+	 *
+	 * @return
+	 */
+	public boolean exists() {
+		File f = new File(getPath());
+		return f.exists();
+	}
+	
+
+	public boolean isDirectory() {
+		return new File(getPath()).isDirectory();
+	}
+	
+	/**
+	 * 
+	 *@Info
+	 *		Return all subfiles of this folder.
+	 *
+	 * @return
+	 * @throws Exception
+	 * 	-If the file is not a directory.
+	 */
+	public File[] getSubFiles() throws Exception {
+		if(isDirectory() != true) {
+			throw new Exception("Can not get sub-files. The path: " +  getPath() + " is not a directory.");
+		}
+		File thisDirectory = new File(getPath());
+		
+		File[] files = thisDirectory.listFiles();
+		return files;
 	}
 }
