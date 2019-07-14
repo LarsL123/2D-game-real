@@ -1,7 +1,7 @@
 # 2D-game-real
 My first 2d Game!
 
-A simple game written in java.
+The start of a game engine i was writing on.
 
-I am using LWJGL and OpenGl for rendering!
+It is using LWJGL and OpenGl for rendering!
 
